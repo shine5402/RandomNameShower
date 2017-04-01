@@ -62,9 +62,8 @@ uses unit2;
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   names:=Tstringlist.Create;
-  settingspath:='D:\桌面\课件存档\点名器\settings.ini';
+  settingspath:='./settings.ini';
   settings:=Tinifile.create(settingspath);
-
   namespath:=settings.readstring('paths','namespath','./names.txt');
   names.LoadFromFile(namespath);
 
