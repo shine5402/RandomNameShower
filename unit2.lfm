@@ -1,11 +1,13 @@
 object Form2: TForm2
-  Left = 423
-  Height = 287
-  Top = 269
-  Width = 538
+  Left = 436
+  Height = 326
+  Top = 271
+  Width = 328
   Caption = '选项'
-  ClientHeight = 287
-  ClientWidth = 538
+  ClientHeight = 326
+  ClientWidth = 328
+  Constraints.MinHeight = 151
+  Constraints.MinWidth = 328
   OnCreate = FormCreate
   LCLVersion = '1.6.2.0'
   object Button1: TButton
@@ -14,9 +16,9 @@ object Form2: TForm2
     AnchorSideTop.Control = Owner
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 230
+    Left = 125
     Height = 27
-    Top = 255
+    Top = 294
     Width = 78
     Anchors = [akLeft, akBottom]
     BorderSpacing.Bottom = 5
@@ -31,21 +33,21 @@ object Form2: TForm2
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Button1
     Left = 5
-    Height = 245
+    Height = 284
     Top = 5
-    Width = 528
-    ActivePage = TabSheet2
+    Width = 318
+    ActivePage = TabSheet1
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Left = 5
     BorderSpacing.Top = 5
     BorderSpacing.Right = 5
     BorderSpacing.Bottom = 5
-    TabIndex = 1
+    TabIndex = 0
     TabOrder = 1
     object TabSheet1: TTabSheet
       Caption = '设置保存相关'
-      ClientHeight = 215
-      ClientWidth = 520
+      ClientHeight = 254
+      ClientWidth = 310
       object CheckBox1: TCheckBox
         AnchorSideLeft.Control = TabSheet1
         AnchorSideTop.Control = TabSheet1
@@ -68,11 +70,23 @@ object Form2: TForm2
         Caption = '保存动画设置到硬盘'
         TabOrder = 1
       end
+      object CheckBox3: TCheckBox
+        AnchorSideLeft.Control = CheckBox1
+        AnchorSideTop.Control = CheckBox1
+        AnchorSideTop.Side = asrBottom
+        Left = 0
+        Height = 21
+        Top = 26
+        Width = 130
+        BorderSpacing.Top = 5
+        Caption = '保存窗口大小到硬盘'
+        TabOrder = 2
+      end
     end
     object TabSheet2: TTabSheet
       Caption = '路径相关'
-      ClientHeight = 215
-      ClientWidth = 520
+      ClientHeight = 254
+      ClientWidth = 444
       object DirectoryEdit1: TDirectoryEdit
         AnchorSideLeft.Control = TabSheet2
         AnchorSideTop.Control = Label2
@@ -82,7 +96,7 @@ object Form2: TForm2
         Left = 0
         Height = 25
         Top = 22
-        Width = 520
+        Width = 444
         ShowHidden = False
         ButtonWidth = 23
         NumGlyphs = 1
