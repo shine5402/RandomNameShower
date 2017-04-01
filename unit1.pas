@@ -68,8 +68,8 @@ begin
   names.LoadFromFile(namespath);
 
 
-  savefontsetting:=settings.ReadBool('fonts','whethersave',false);
-  saveanimatesetting:=settings.ReadBool('animate','whethersave',false);
+  savefontsetting:=settings.ReadBool('fonts','whethersave',true);
+  saveanimatesetting:=settings.ReadBool('animate','whethersave',true);
   animate:=settings.ReadBool('animate','switch',false);
   if savefontsetting then begin
   fontdialog1.Font.Size:=settings.ReadInteger('font','size',18);
