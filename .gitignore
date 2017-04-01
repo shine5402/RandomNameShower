@@ -1,0 +1,18 @@
+# Windows:
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+# Backups:
+*.bak
+# Lazarus:
+lib/
+backup/
+*.exe
+*.dbg
+#Languages
+*.mo
+#Other Files
+settings.ini
+names.txt
+*.png
+*.ico

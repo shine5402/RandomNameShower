@@ -1,0 +1,93 @@
+object Form1: TForm1
+  Left = 491
+  Height = 274
+  Top = 169
+  Width = 339
+  Caption = '随机点名器'
+  ClientHeight = 254
+  ClientWidth = 339
+  Menu = MainMenu1
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  LCLVersion = '1.6.4.0'
+  object Label1: TLabel
+    AnchorSideLeft.Control = Owner
+    AnchorSideLeft.Side = asrCenter
+    AnchorSideTop.Control = Owner
+    AnchorSideTop.Side = asrCenter
+    Left = 169
+    Height = 1
+    Top = 127
+    Width = 1
+    ParentColor = False
+  end
+  object Button1: TButton
+    AnchorSideLeft.Control = Owner
+    AnchorSideLeft.Side = asrCenter
+    AnchorSideTop.Control = Owner
+    AnchorSideTop.Side = asrCenter
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 132
+    Height = 27
+    Top = 222
+    Width = 74
+    Anchors = [akLeft, akBottom]
+    AutoSize = True
+    BorderSpacing.Bottom = 5
+    Caption = '随机点名'
+    OnClick = Button1Click
+    TabOrder = 0
+  end
+  object MainMenu1: TMainMenu
+    left = 264
+    top = 16
+    object MenuItem1: TMenuItem
+      Caption = '设置'
+      object MenuItem3: TMenuItem
+        Caption = '字体'
+        OnClick = MenuItem3Click
+      end
+      object MenuItem5: TMenuItem
+        Caption = '动画'
+        Checked = True
+        OnClick = MenuItem5Click
+      end
+      object MenuItem6: TMenuItem
+        Caption = '-'
+        OnClick = MenuItem6Click
+      end
+      object MenuItem7: TMenuItem
+        Caption = '选项'
+        OnClick = MenuItem7Click
+      end
+    end
+    object MenuItem2: TMenuItem
+      Caption = '帮助'
+      object MenuItem4: TMenuItem
+        Caption = '关于'
+        OnClick = MenuItem4Click
+      end
+    end
+  end
+  object FontDialog1: TFontDialog
+    Font.CharSet = 4
+    Font.Name = '微软雅黑'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    MinFontSize = 0
+    MaxFontSize = 0
+    left = 160
+    top = 48
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 5
+    OnTimer = Timer1Timer
+    OnStartTimer = Timer1StartTimer
+    OnStopTimer = Timer1StopTimer
+    left = 40
+    top = 16
+  end
+end

@@ -1,0 +1,100 @@
+object Form2: TForm2
+  Left = 312
+  Height = 162
+  Top = 211
+  Width = 391
+  Caption = '选项'
+  ClientHeight = 162
+  ClientWidth = 391
+  OnCreate = FormCreate
+  LCLVersion = '1.6.4.0'
+  object CheckBox1: TCheckBox
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    Left = 15
+    Height = 21
+    Top = 15
+    Width = 130
+    BorderSpacing.Left = 15
+    BorderSpacing.Top = 15
+    Caption = '保存字体设置到硬盘'
+    TabOrder = 0
+  end
+  object Panel1: TPanel
+    AnchorSideLeft.Control = CheckBox1
+    AnchorSideTop.Control = CheckBox1
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 15
+    Height = 55
+    Top = 41
+    Width = 376
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Top = 5
+    BevelOuter = bvNone
+    Caption = 'Panel1'
+    ClientHeight = 55
+    ClientWidth = 376
+    TabOrder = 1
+    object DirectoryEdit1: TDirectoryEdit
+      AnchorSideLeft.Control = Panel1
+      AnchorSideTop.Control = Label2
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = Panel1
+      AnchorSideRight.Side = asrBottom
+      Left = 0
+      Height = 25
+      Top = 22
+      Width = 361
+      ShowHidden = False
+      ButtonWidth = 23
+      NumGlyphs = 1
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Right = 15
+      MaxLength = 0
+      TabOrder = 0
+    end
+    object Label2: TLabel
+      AnchorSideLeft.Control = Panel1
+      AnchorSideTop.Control = Panel1
+      Left = 5
+      Height = 17
+      Top = 0
+      Width = 72
+      BorderSpacing.Left = 5
+      BorderSpacing.Bottom = 5
+      Caption = '名字文件路径'
+      ParentColor = False
+    end
+  end
+  object Button1: TButton
+    AnchorSideLeft.Control = Owner
+    AnchorSideLeft.Side = asrCenter
+    AnchorSideTop.Control = Owner
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 156
+    Height = 27
+    Top = 130
+    Width = 78
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.Bottom = 5
+    Caption = '确定'
+    OnClick = Button1Click
+    TabOrder = 2
+  end
+  object CheckBox2: TCheckBox
+    AnchorSideLeft.Control = CheckBox1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Owner
+    Left = 160
+    Height = 21
+    Top = 15
+    Width = 130
+    BorderSpacing.Left = 15
+    BorderSpacing.Top = 15
+    Caption = '保存动画设置到硬盘'
+    TabOrder = 3
+  end
+end
