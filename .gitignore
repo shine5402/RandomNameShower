@@ -14,7 +14,6 @@ backup/
 #Other Files
 settings.ini
 names.txt
-!/截图/
-!/截图/*.png
-*.png
 *.ico
+*.png
+!/截图/*.png
