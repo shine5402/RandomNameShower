@@ -1,13 +1,13 @@
 object AboutForm: TAboutForm
-  Left = 265
-  Height = 401
-  Top = 174
-  Width = 384
+  Left = 455
+  Height = 423
+  Top = 202
+  Width = 499
   Caption = '关于'
-  ClientHeight = 0
-  ClientWidth = 0
+  ClientHeight = 423
+  ClientWidth = 499
   OnCreate = FormCreate
-  LCLVersion = '1.6.4.0'
+  LCLVersion = '1.6.2.0'
   object Image1: TImage
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
@@ -253,17 +253,18 @@ object AboutForm: TAboutForm
     Left = 111
     Height = 17
     Top = 63
-    Width = 124
+    Width = 247
     BorderSpacing.Top = 5
-    Caption = 'Copyright shine_5402'
+    Caption = '版权所有 shine_5402(shine_5402@126.com)'
     ParentColor = False
     OnClick = Label2Click
   end
   object Button1: TButton
     AnchorSideTop.Control = Image1
     AnchorSideTop.Side = asrCenter
+    AnchorSideRight.Control = Memo1
     AnchorSideRight.Side = asrBottom
-    Left = -100
+    Left = 404
     Height = 25
     Top = 43
     Width = 75
@@ -282,32 +283,28 @@ object AboutForm: TAboutForm
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 15
-    Height = 0
+    Height = 297
     Top = 111
-    Width = 0
+    Width = 469
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Left = 15
     BorderSpacing.Top = 15
     BorderSpacing.Right = 15
     BorderSpacing.Bottom = 15
     Lines.Strings = (
-      '    This program is free software: you can redistribute it '
-      'and/or modify it under the terms of the GNU General '
-      'Public License as published by the Free Software '
-      'Foundation, either version 3 of the License, or (at your '
-      'option) any later version. This program is distributed in '
-      'the hope that it will be useful, but WITHOUT ANY '
-      'WARRANTY; without even the implied warranty of '
-      'MERCHANTABILITY or FITNESS FOR A PARTICULAR '
-      'PURPOSE.  See the GNU General Public License for '
-      'more details.'
-      '    You should have received a copy of the GNU '
-      'General Public License along with this program.  If not, '
-      'see <http://www.gnu.org/licenses/>.'
-      ''
-      '    图标来自：freebiesbug(http://freebiesbug.com/psd-'
+      '随机点名器 - 一个简单的随机点名程序'
+      '    版权所有 (C) 2017 shine_5402(shine_5402@126.com)'
+      '    此程序是自由软件，您可以依据自由软件基金会发布的GNU通用公共许可证（版'
+      '本3，或取决于您的选择选择更高的版本）的条款重新分发和/或修改它。'
+      '    我们分发这个程序的目的是希望它有用，但是我们对它的可用性没有任何保证，'
+      '甚至也没有对于适销性或适用于特定用途的默示保证。有关详细信息，请参阅GNU'
+      '通用公共许可证。'
+      '    您应该在收到本程序的同时就已经收到GNU通用公共许可证的副本。 如果没有'
+      '，请参阅<http://www.gnu.org/licenses/>。'
+      '    注意：本程序的图标不适用于GNU通用公共许可证的约束，它来自于：'
+      'freebiesbug(http://freebiesbug.com/psd-'
       'freebies/150-free-outlined-icons-psd-ai-svg-webfont/)'
-      '，并经个人修改，Free for personal use only.'
+      '，并经个人修改，只免费提供给个人用途。'
     )
     ReadOnly = True
     ScrollBars = ssAutoBoth

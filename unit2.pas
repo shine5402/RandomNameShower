@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ExtCtrls, EditBtn,unit1;
+  ExtCtrls, EditBtn, ComCtrls,unit1;
 
 type
 
@@ -18,7 +18,9 @@ type
     CheckBox2: TCheckBox;
     DirectoryEdit1: TDirectoryEdit;
     Label2: TLabel;
-    Panel1: TPanel;
+    PageControl1: TPageControl;
+    TabSheet1: TTabSheet;
+    TabSheet2: TTabSheet;
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private

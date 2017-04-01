@@ -24,6 +24,8 @@ type
     MenuItem5: TMenuItem;
     MenuItem6: TMenuItem;
     MenuItem7: TMenuItem;
+    MenuItem8: TMenuItem;
+    MenuItem9: TMenuItem;
     Timer1: TTimer;
     procedure Button1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -34,6 +36,7 @@ type
     procedure MenuItem5Click(Sender: TObject);
     procedure MenuItem6Click(Sender: TObject);
     procedure MenuItem7Click(Sender: TObject);
+    procedure MenuItem8Click(Sender: TObject);
     procedure Timer1StartTimer(Sender: TObject);
     procedure Timer1StopTimer(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -124,6 +127,11 @@ end;
 procedure TForm1.MenuItem7Click(Sender: TObject);
 begin
   form2.Show;
+end;
+
+procedure TForm1.MenuItem8Click(Sender: TObject);
+begin
+  Label1.Caption:='';
 end;
 
 procedure TForm1.Timer1StartTimer(Sender: TObject);
