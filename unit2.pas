@@ -16,6 +16,7 @@ type
     Button1: TButton;
     CheckBox1: TCheckBox;
     CheckBox2: TCheckBox;
+    CheckBox3: TCheckBox;
     DirectoryEdit1: TDirectoryEdit;
     Label2: TLabel;
     PageControl1: TPageControl;
@@ -43,6 +44,7 @@ begin
     directoryedit1.Text:=namespath;
     checkbox1.Checked:=savefontsetting;
     checkbox2.Checked:=saveanimatesetting;
+    checkbox3.Checked:=savewindowsize;
 end;
 
 procedure TForm2.Button1Click(Sender: TObject);
@@ -50,6 +52,7 @@ begin
     namespath:=directoryedit1.Text;
     savefontsetting:=checkbox1.Checked;
     saveanimatesetting:=checkbox2.Checked;
+    savewindowsize:=checkbox3.Checked;
     names.LoadFromFile(namespath);
     form2.close;
 end;

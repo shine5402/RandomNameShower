@@ -9,6 +9,7 @@
       <Title Value="随机点名器"/>
       <ResourceType Value="res"/>
       <UseXPManifest Value="True"/>
+      <Icon Value="0"/>
     </General>
     <i18n>
       <EnableI18N LFM="False"/>
@@ -19,7 +20,7 @@
       <MajorVersionNr Value="1"/>
       <MinorVersionNr Value="6"/>
       <RevisionNr Value="5"/>
-      <BuildNr Value="19"/>
+      <BuildNr Value="20"/>
       <Language Value="0804"/>
       <StringTable Comments="一个简单好用的随机点名器" FileDescription="一个简单好用的随机点名器" LegalCopyright="GNU GPL V3" OriginalFilename="随机点名器" ProductName="随机点名器" ProductVersion="1"/>
     </VersionInfo>
