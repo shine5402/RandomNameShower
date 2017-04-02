@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  StdCtrls,shellapi;
+  StdCtrls,shellapi,windows;
 
 type
 
@@ -21,6 +21,7 @@ type
     Image4: TImage;
     Label1: TLabel;
     Label2: TLabel;
+    fileVersion: TLabel;
     Memo1: TMemo;
     Panel1: TPanel;
     Panel2: TPanel;
@@ -45,9 +46,7 @@ var
 implementation
 
 {$R *.lfm}
-
 { TAboutForm }
-
 procedure TAboutForm.Label2Click(Sender: TObject);
 begin
 

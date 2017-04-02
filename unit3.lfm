@@ -1,7 +1,7 @@
 object AboutForm: TAboutForm
-  Left = 522
+  Left = 471
   Height = 370
-  Top = 264
+  Top = 237
   Width = 616
   Caption = '关于'
   ClientHeight = 370
