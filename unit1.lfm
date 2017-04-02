@@ -1,11 +1,11 @@
 object Form1: TForm1
-  Left = 491
-  Height = 274
-  Top = 169
-  Width = 339
+  Left = 480
+  Height = 327
+  Top = 194
+  Width = 373
   Caption = '随机点名器'
-  ClientHeight = 254
-  ClientWidth = 339
+  ClientHeight = 307
+  ClientWidth = 373
   Menu = MainMenu1
   OnClose = FormClose
   OnCreate = FormCreate
@@ -17,9 +17,9 @@ object Form1: TForm1
     AnchorSideLeft.Side = asrCenter
     AnchorSideTop.Control = Owner
     AnchorSideTop.Side = asrCenter
-    Left = 169
+    Left = 186
     Height = 1
-    Top = 127
+    Top = 153
     Width = 1
     ParentColor = False
   end
@@ -30,9 +30,9 @@ object Form1: TForm1
     AnchorSideTop.Side = asrCenter
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 132
+    Left = 149
     Height = 27
-    Top = 222
+    Top = 275
     Width = 74
     Anchors = [akLeft, akBottom]
     AutoSize = True
