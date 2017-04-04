@@ -51,10 +51,12 @@ object Form2: TForm2
       object CheckBox1: TCheckBox
         AnchorSideLeft.Control = TabSheet1
         AnchorSideTop.Control = TabSheet1
-        Left = 0
+        Left = 5
         Height = 21
-        Top = 0
+        Top = 5
         Width = 130
+        BorderSpacing.Left = 5
+        BorderSpacing.Top = 5
         Caption = '保存字体设置到硬盘'
         TabOrder = 0
       end
@@ -62,11 +64,12 @@ object Form2: TForm2
         AnchorSideLeft.Control = CheckBox1
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = TabSheet1
-        Left = 145
+        Left = 150
         Height = 21
-        Top = 0
+        Top = 5
         Width = 130
         BorderSpacing.Left = 15
+        BorderSpacing.Top = 5
         Caption = '保存动画设置到硬盘'
         TabOrder = 1
       end
@@ -74,9 +77,9 @@ object Form2: TForm2
         AnchorSideLeft.Control = CheckBox1
         AnchorSideTop.Control = CheckBox1
         AnchorSideTop.Side = asrBottom
-        Left = 0
+        Left = 5
         Height = 21
-        Top = 26
+        Top = 31
         Width = 130
         BorderSpacing.Top = 5
         Caption = '保存窗口大小到硬盘'
@@ -114,6 +117,60 @@ object Form2: TForm2
         BorderSpacing.Left = 5
         BorderSpacing.Bottom = 5
         Caption = '名字文件路径'
+        ParentColor = False
+      end
+    end
+    object TabSheet3: TTabSheet
+      Caption = '防暗箱设置'
+      ClientHeight = 151
+      ClientWidth = 310
+      object CheckBox4: TCheckBox
+        AnchorSideLeft.Control = TabSheet3
+        AnchorSideTop.Control = TabSheet3
+        Left = 5
+        Height = 21
+        Top = 5
+        Width = 123
+        BorderSpacing.Left = 5
+        BorderSpacing.Top = 5
+        Caption = '名单文件Hash校验'
+        OnChange = CheckBox4Change
+        TabOrder = 0
+      end
+      object Label1: TLabel
+        AnchorSideLeft.Control = CheckBox4
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = CheckBox4
+        AnchorSideTop.Side = asrCenter
+        Left = 133
+        Height = 17
+        Top = 7
+        Width = 117
+        BorderSpacing.Left = 5
+        Caption = '当前Hash算法：MD5'
+        ParentColor = False
+      end
+      object CheckBox5: TCheckBox
+        AnchorSideLeft.Control = CheckBox4
+        AnchorSideTop.Control = CheckBox4
+        AnchorSideTop.Side = asrBottom
+        Left = 5
+        Height = 21
+        Top = 26
+        Width = 99
+        Caption = '名单Hash混淆'
+        TabOrder = 1
+      end
+      object Label3: TLabel
+        AnchorSideLeft.Control = Label1
+        AnchorSideTop.Control = Label1
+        AnchorSideTop.Side = asrBottom
+        Left = 133
+        Height = 17
+        Top = 29
+        Width = 103
+        BorderSpacing.Top = 5
+        Caption = '当前混淆算法：xor'
         ParentColor = False
       end
     end
