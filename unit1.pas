@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-   Menus, ExtCtrls,unit3,IniFiles;
+   Menus, ExtCtrls,unit3,IniFiles,md5;
 
 type
 
@@ -50,9 +50,9 @@ type
 var
   Form1: TForm1;
   names:Tstringlist;
-  namespath,settingspath:string;
-  rollnumber,k,i,j,animateduration,animatetimes,animateintervalmin,rollnumbermin:integer;
-  animate,savefontsetting,saveanimatesetting,savewindowsize:boolean;
+  namespath,settingspath,nameslasthash,nameshash,s:string;
+  rollnumber,k,i,j,animateduration,animatetimes,animateintervalmin,rollnumbermin,encryptkey,hashencryptlength:integer;
+  animate,savefontsetting,saveanimatesetting,savewindowsize,whetherhash,encrypthash:boolean;
   settings:tinifile;
 implementation
 uses unit2;
@@ -70,6 +70,10 @@ begin
   savefontsetting:=settings.ReadBool('fonts','whethersave',true);
   saveanimatesetting:=settings.ReadBool('animate','whethersave',true);
   savewindowsize:=settings.ReadBool('window','whethersave',false);
+  whetherhash:=settings.readbool('hash','whetherhash',false);
+  encrypthash:=settings.readbool('hash','encrypthash',false);
+  encryptkey:=settings.readinteger('hash','encryptkey',1234);
+  hashencryptlength:=settings.readinteger('hash','hashencryptlength',0);
   if saveanimatesetting then begin
   animate:=settings.ReadBool('animate','switch',false);
   animateduration:=settings.ReadInteger('advanced','animte.animteduration',2000);
@@ -82,6 +86,36 @@ begin
   fontdialog1.Font.name:=settings.Readstring('font','fontname','微软雅黑');
   label1.Font:=fontdialog1.Font;
   end;
+  if encrypthash then begin
+  nameslasthash:=settings.readstring('hash','namesmd5','');
+  if nameslasthash = '' then begin
+  showmessage('没有找到上一次的名单Hash记录，settings.ini中的记录可能被删除，建议检查名单文件有没有被篡改！程序即将退出。');
+  application.Terminate;
+  end;
+  nameshash:=MD5Print(MD5File(namespath));
+  for i:= 1 to hashencryptlength do begin
+    str(i,s);
+    s:='e'+s;
+    j:=settings.readinteger('hash',s,0) xor encryptkey;
+    nameslasthash[i]:=chr(j);
+  end;
+  if nameshash <> nameslasthash then begin
+  showmessage('名单文件的Hash记录与上一次记录的不符，建议检查名单文件有没有被篡改！程序即将退出。');
+  application.Terminate;
+  end;
+  end;
+  if (whetherhash xor encrypthash) and whetherhash then begin
+  nameslasthash:=settings.readstring('hash','namesmd5','');
+  if nameslasthash = '' then begin
+  showmessage('没有找到上一次的名单Hash记录，settings.ini中的记录可能被删除，建议检查名单文件有没有被篡改！程序即将退出。');
+  application.Terminate;
+  end;
+  nameshash:=MD5Print(MD5File(namespath));
+  if nameshash <> nameslasthash then begin
+  showmessage('名单文件的Hash记录与上一次记录的不符，建议检查名单文件有没有被篡改！程序即将退出。');
+  application.Terminate;
+  end;
+  end;
 
   MenuItem5.Checked:=animate;
   rollnumber:=names.count+1;
@@ -89,29 +123,13 @@ begin
   if animateduration div rollnumber <> 0 then Timer1.Interval:=animateduration div rollnumber else Timer1.Interval:=animateintervalmin;
     i:=names.count;
   k:=0;
+  j:=0;
   randomize;
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
 begin
-  names.Free;
-  settings.WriteString('paths','namespath',namespath);
-  settings.WriteBool('fonts','whethersave',savefontsetting);
-  settings.WriteBool('animate','whethersave',saveanimatesetting);
-  settings.WriteBool('window','whethersave',savewindowsize);
-  if savefontsetting then begin
-  settings.writeinteger('font','size',fontdialog1.Font.Size);
-  settings.writeinteger('font','color',fontdialog1.Font.color);
-  settings.writestring('font','fontname',fontdialog1.Font.name);
-  end;
-  if saveanimatesetting then begin
-  settings.WriteBool('animate','switch',animate);
-  settings.WriteInteger('advanced','animte.animteduration',animateduration);
-  settings.WriteInteger('advanced','animate.rollnumbermin',rollnumbermin);
-  settings.WriteInteger('advanced','animate.animateintervalmin',animateintervalmin);
-  end;
 
-  settings.Free;
 end;
 
 procedure TForm1.FormShow(Sender: TObject);
@@ -195,6 +213,42 @@ begin
   settings.WriteInteger('window','height',Form1.Height);
   settings.WriteInteger('window','WindowState',Integer(Form1.WindowState));
   end;
+   names.destroy;
+  settings.WriteString('paths','namespath',namespath);
+  settings.WriteBool('fonts','whethersave',savefontsetting);
+  settings.WriteBool('animate','whethersave',saveanimatesetting);
+  settings.WriteBool('window','whethersave',savewindowsize);
+  settings.WriteBool('hash','whetherhash',whetherhash);
+  settings.WriteBool('hash','encrypthash',encrypthash);
+  if savefontsetting then begin
+  settings.writeinteger('font','size',fontdialog1.Font.Size);
+  settings.writeinteger('font','color',fontdialog1.Font.color);
+  settings.writestring('font','fontname',fontdialog1.Font.name);
+  end;
+  if saveanimatesetting then begin
+  settings.WriteBool('animate','switch',animate);
+  settings.WriteInteger('advanced','animte.animteduration',animateduration);
+  settings.WriteInteger('advanced','animate.rollnumbermin',rollnumbermin);
+  settings.WriteInteger('advanced','animate.animateintervalmin',animateintervalmin);
+  end;
+  if (whetherhash xor encrypthash) and whetherhash then begin
+  settings.WriteString('hash','namesmd5',nameshash);
+  end;
+  if encrypthash then begin
+  settings.writeinteger('hash','encryptkey',encryptkey);
+  hashencryptlength:=0;
+  nameshash:=MD5Print(MD5File(namespath));
+  for i:= 1 to length(nameshash) do begin
+    str(i,s);
+    s:='e'+s;
+    //showmessage(s);
+    settings.writeinteger('hash',s,ord(nameshash[i]) xor encryptkey) ;
+    hashencryptlength:=hashencryptlength+1;
+  end;
+  settings.writeinteger('hash','hashencryptlength',hashencryptlength);
+  settings.WriteString('hash','namesmd5',nameshash);
+  end;
+  settings.Destroy;
 end;
 
 
