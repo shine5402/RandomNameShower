@@ -3,7 +3,7 @@
   <ProjectSession>
     <PathDelim Value="\"/>
     <Version Value="9"/>
-    <BuildModes Active="Release"/>
+    <BuildModes Active="Debug"/>
     <Units Count="4">
       <Unit0>
         <Filename Value="project1.lpr"/>
@@ -21,8 +21,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit1"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="228"/>
-        <CursorPos X="53" Y="234"/>
+        <TopLine Value="97"/>
+        <CursorPos X="12" Y="248"/>
         <FoldState Value=" T0iXT516"/>
         <UsageCount Value="66"/>
         <Loaded Value="True"/>
