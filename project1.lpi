@@ -20,7 +20,7 @@
       <MajorVersionNr Value="1"/>
       <MinorVersionNr Value="10"/>
       <RevisionNr Value="3"/>
-      <BuildNr Value="24"/>
+      <BuildNr Value="25"/>
       <Language Value="0804"/>
       <StringTable Comments="一个简单好用的随机点名器" FileDescription="一个简单好用的随机点名器" LegalCopyright="GNU GPL V3" OriginalFilename="随机点名器" ProductName="随机点名器" ProductVersion="1"/>
     </VersionInfo>
