@@ -8,6 +8,7 @@
       <Unit0>
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
         <CursorPos Y="23"/>
         <UsageCount Value="66"/>
@@ -20,8 +21,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit1"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="97"/>
+        <TopLine Value="96"/>
         <CursorPos X="12" Y="248"/>
         <FoldState Value=" T0iXT516"/>
         <UsageCount Value="66"/>
@@ -56,7 +56,7 @@
         <LoadedDesigner Value="True"/>
       </Unit3>
     </Units>
-    <JumpHistory Count="28" HistoryIndex="27">
+    <JumpHistory Count="29" HistoryIndex="28">
       <Position1>
         <Filename Value="unit1.pas"/>
         <Caret Line="90" Column="151" TopLine="77"/>
@@ -169,6 +169,10 @@
         <Filename Value="unit1.pas"/>
         <Caret Line="238" Column="79" TopLine="225"/>
       </Position28>
+      <Position29>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="23"/>
+      </Position29>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>
