@@ -50,7 +50,7 @@ type
 var
   Form1: TForm1;
   names:Tstringlist;
-  namespath,settingspath,nameslasthash,nameshash,s:string;
+  namespath,settingspath,nameshash,s,nameslasthash:string;
   rollnumber,k,i,j,animateduration,animatetimes,animateintervalmin,rollnumbermin,encryptkey,hashencryptlength:integer;
   animate,savefontsetting,saveanimatesetting,savewindowsize,whetherhash,encrypthash:boolean;
   settings:tinifile;
@@ -87,17 +87,16 @@ begin
   label1.Font:=fontdialog1.Font;
   end;
   if encrypthash then begin
-  nameslasthash:=settings.readstring('hash','namesmd5','');
-  if nameslasthash = '' then begin
-  showmessage('没有找到上一次的名单Hash记录，settings.ini中的记录可能被删除，建议检查名单文件有没有被篡改！程序即将退出。');
-  application.Terminate;
-  end;
   nameshash:=MD5Print(MD5File(namespath));
+  nameslasthash:='';
   for i:= 1 to hashencryptlength do begin
     str(i,s);
     s:='e'+s;
     j:=settings.readinteger('hash',s,0) xor encryptkey;
-    nameslasthash[i]:=chr(j);
+    //showmessage(chr(j));
+    //showmessage(nameshash);
+    nameslasthash:=nameslasthash+chr(j);
+    //showmessage(nameslasthash);
   end;
   if nameshash <> nameslasthash then begin
   showmessage('名单文件的Hash记录与上一次记录的不符，建议检查名单文件有没有被篡改！程序即将退出。');
@@ -246,7 +245,6 @@ begin
     hashencryptlength:=hashencryptlength+1;
   end;
   settings.writeinteger('hash','hashencryptlength',hashencryptlength);
-  settings.WriteString('hash','namesmd5',nameshash);
   end;
   settings.Destroy;
 end;
