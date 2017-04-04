@@ -128,7 +128,8 @@ end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
 begin
-
+   names.destroy;
+   settings.Destroy;
 end;
 
 procedure TForm1.FormShow(Sender: TObject);
@@ -212,7 +213,7 @@ begin
   settings.WriteInteger('window','height',Form1.Height);
   settings.WriteInteger('window','WindowState',Integer(Form1.WindowState));
   end;
-   names.destroy;
+
   settings.WriteString('paths','namespath',namespath);
   settings.WriteBool('fonts','whethersave',savefontsetting);
   settings.WriteBool('animate','whethersave',saveanimatesetting);
@@ -246,7 +247,7 @@ begin
   end;
   settings.writeinteger('hash','hashencryptlength',hashencryptlength);
   end;
-  settings.Destroy;
+
 end;
 
 
