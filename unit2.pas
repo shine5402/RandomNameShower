@@ -19,6 +19,7 @@ type
     CheckBox3: TCheckBox;
     CheckBox4: TCheckBox;
     CheckBox5: TCheckBox;
+    EditButton1: TEditButton;
     FileNameEdit1: TFileNameEdit;
     Label1: TLabel;
     Label2: TLabel;
@@ -27,6 +28,7 @@ type
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
     TabSheet3: TTabSheet;
+    TabSheet4: TTabSheet;
     procedure Button1Click(Sender: TObject);
     procedure CheckBox4Change(Sender: TObject);
     procedure CheckBox5Change(Sender: TObject);
