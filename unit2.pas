@@ -19,7 +19,7 @@ type
     CheckBox3: TCheckBox;
     CheckBox4: TCheckBox;
     CheckBox5: TCheckBox;
-    DirectoryEdit1: TDirectoryEdit;
+    FileNameEdit1: TFileNameEdit;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
@@ -47,7 +47,7 @@ implementation
 
 procedure TForm2.FormCreate(Sender: TObject);
 begin
-    directoryedit1.Text:=namespath;
+    filenameedit1.Text:=namespath;
     checkbox1.Checked:=savefontsetting;
     checkbox2.Checked:=saveanimatesetting;
     checkbox3.Checked:=savewindowsize;
@@ -57,13 +57,14 @@ end;
 
 procedure TForm2.Button1Click(Sender: TObject);
 begin
-    namespath:=directoryedit1.Text;
+    namespath:=filenameedit1.Text;
     savefontsetting:=checkbox1.Checked;
     saveanimatesetting:=checkbox2.Checked;
     savewindowsize:=checkbox3.Checked;
     whetherhash:=checkbox4.checked;
     encrypthash:=checkbox5.checked;
     names.LoadFromFile(namespath);
+    i:=names.count;
     form2.close;
 end;
 
