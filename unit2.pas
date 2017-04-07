@@ -29,6 +29,7 @@ type
     TabSheet3: TTabSheet;
     procedure Button1Click(Sender: TObject);
     procedure CheckBox4Change(Sender: TObject);
+    procedure CheckBox5Change(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
     { private declarations }
@@ -53,6 +54,9 @@ begin
     checkbox3.Checked:=savewindowsize;
     checkbox4.checked:=whetherhash;
     checkbox5.checked:=encrypthash;
+      if not(checkbox4.Checked) then checkbox5.enabled:=false else checkbox5.enabled:=true;
+    if checkbox4.checked then label1.Enabled:=true else label1.Enabled:=false;
+    if (checkbox5.checked and checkbox5.enabled) then label3.Enabled:=true else label3.Enabled:=false
 end;
 
 procedure TForm2.Button1Click(Sender: TObject);
@@ -70,7 +74,16 @@ end;
 
 procedure TForm2.CheckBox4Change(Sender: TObject);
 begin
+  if not(checkbox4.Checked) then checkbox5.enabled:=false else checkbox5.enabled:=true;
+    if checkbox4.checked then label1.Enabled:=true else label1.Enabled:=false;
+    if (checkbox5.checked and checkbox5.enabled) then label3.Enabled:=true else label3.Enabled:=false ;
+end;
 
+procedure TForm2.CheckBox5Change(Sender: TObject);
+begin
+      if not(checkbox4.Checked) then checkbox5.enabled:=false else checkbox5.enabled:=true;
+    if checkbox4.checked then label1.Enabled:=true else label1.Enabled:=false;
+    if (checkbox5.checked and checkbox5.enabled) then label3.Enabled:=true else label3.Enabled:=false
 end;
 
 end.

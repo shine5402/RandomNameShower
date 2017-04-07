@@ -36,13 +36,13 @@ object Form2: TForm2
     Height = 181
     Top = 5
     Width = 318
-    ActivePage = TabSheet1
+    ActivePage = TabSheet3
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Left = 5
     BorderSpacing.Top = 5
     BorderSpacing.Right = 5
     BorderSpacing.Bottom = 5
-    TabIndex = 0
+    TabIndex = 2
     TabOrder = 1
     object TabSheet1: TTabSheet
       Caption = '设置保存相关'
@@ -161,6 +161,7 @@ object Form2: TForm2
         Top = 26
         Width = 99
         Caption = '名单Hash混淆'
+        OnChange = CheckBox5Change
         TabOrder = 1
       end
       object Label3: TLabel
