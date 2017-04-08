@@ -62,12 +62,14 @@ uses unit2;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
+  rootenabled:=false;
   names:=Tstringlist.Create;
   settingspath:='./settings.ini';
   settings:=Tinifile.create(settingspath);
   namespath:=settings.readstring('paths','namespath','./names.txt');
+  passwordmd5:=settings.readstring('password','md5','25d55ad283aa400af464c76d713c07ad');
   names.LoadFromFile(namespath);
-  savefontsetting:=settings.ReadBool('fonts','whethersave',true);
+  savefontsetting:=settings.ReadBool('font','whethersave',true);
   saveanimatesetting:=settings.ReadBool('animate','whethersave',true);
   savewindowsize:=settings.ReadBool('window','whethersave',false);
   whetherhash:=settings.readbool('hash','whetherhash',false);
@@ -115,7 +117,7 @@ begin
   application.Terminate;
   end;
   end;
-
+  if passwordmd5='25d55ad283aa400af464c76d713c07ad' then showmessage('您的管理员密码目前为初始密码。请进入选项进行修改。');
   MenuItem5.Checked:=animate;
   rollnumber:=names.count+1;
   if rollnumber < rollnumbermin then rollnumber:=rollnumbermin;
@@ -215,7 +217,7 @@ begin
   end;
 
   settings.WriteString('paths','namespath',namespath);
-  settings.WriteBool('fonts','whethersave',savefontsetting);
+  settings.WriteBool('font','whethersave',savefontsetting);
   settings.WriteBool('animate','whethersave',saveanimatesetting);
   settings.WriteBool('window','whethersave',savewindowsize);
   settings.WriteBool('hash','whetherhash',whetherhash);
@@ -247,7 +249,7 @@ begin
   end;
   settings.writeinteger('hash','hashencryptlength',hashencryptlength);
   end;
-
+  settings.WriteString('password','md5',passwordmd5);
 end;
 
 
