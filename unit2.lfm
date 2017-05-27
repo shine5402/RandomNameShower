@@ -37,18 +37,18 @@ object Form2: TForm2
     Height = 178
     Top = 5
     Width = 331
-    ActivePage = TabSheet4
+    ActivePage = TabSheet1
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Left = 5
     BorderSpacing.Top = 5
     BorderSpacing.Right = 5
     BorderSpacing.Bottom = 5
-    TabIndex = 3
+    TabIndex = 0
     TabOrder = 1
     object TabSheet1: TTabSheet
       Caption = '设置保存相关'
-      ClientHeight = 151
-      ClientWidth = 310
+      ClientHeight = 148
+      ClientWidth = 323
       object CheckBox1: TCheckBox
         AnchorSideLeft.Control = TabSheet1
         AnchorSideTop.Control = TabSheet1
