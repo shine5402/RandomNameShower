@@ -117,6 +117,7 @@ begin
     names.LoadFromFile(namespath);
     i:=names.count;
     rollnumber:=strtoint(edit1.Text);
+    animateinterval:=strtoint(edit2.Text);
     form2.close;
 end;
 
@@ -154,7 +155,7 @@ end;
 
 procedure TForm2.Edit2Change(Sender: TObject);
 begin
-
+if (edit1.text<>'') and (edit2.text<>'') then Label7.Caption:='动画总时长将为 '+inttostr(strtoint(edit1.text)*strtoint(edit2.text))+' 毫秒';
 end;
 
 procedure TForm2.EditButton1ButtonClick(Sender: TObject);
