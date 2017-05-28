@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 480
+  Left = 426
   Height = 327
-  Top = 194
+  Top = 130
   Width = 373
   Caption = '随机点名器'
   ClientHeight = 307
@@ -11,6 +11,7 @@ object Form1: TForm1
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnShow = FormShow
+  ShowInTaskBar = stAlways
   LCLVersion = '1.6.2.0'
   object Label1: TLabel
     AnchorSideLeft.Control = Owner

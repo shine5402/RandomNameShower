@@ -21,27 +21,39 @@ type
     CheckBox3: TCheckBox;
     CheckBox4: TCheckBox;
     CheckBox5: TCheckBox;
+    Edit1: TEdit;
+    Edit2: TEdit;
     EditButton1: TEditButton;
     FileNameEdit1: TFileNameEdit;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
     TabSheet3: TTabSheet;
     TabSheet4: TTabSheet;
+    TabSheet5: TTabSheet;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure CheckBox4Change(Sender: TObject);
     procedure CheckBox5Change(Sender: TObject);
+    procedure Edit1Change(Sender: TObject);
+    procedure Edit2Change(Sender: TObject);
     procedure EditButton1ButtonClick(Sender: TObject);
     procedure EditButton1Change(Sender: TObject);
     procedure EditButton1Enter(Sender: TObject);
     procedure EditButton1KeyUp(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure TabSheet1ContextPopup(Sender: TObject; MousePos: TPoint;
+      var Handled: Boolean);
     procedure TabSheet3ContextPopup(Sender: TObject; MousePos: TPoint;
       var Handled: Boolean);
   private
@@ -62,7 +74,11 @@ implementation
  uses unit4;
 procedure TForm2.FormCreate(Sender: TObject);
 begin
-    filenameedit1.Text:=namespath;
+end;
+
+procedure TForm2.FormShow(Sender: TObject);
+begin
+        filenameedit1.Text:=namespath;
     checkbox1.Checked:=savefontsetting;
     checkbox2.Checked:=saveanimatesetting;
     checkbox3.Checked:=savewindowsize;
@@ -72,6 +88,16 @@ begin
     if checkbox4.checked then label1.Enabled:=true else label1.Enabled:=false;
     if (checkbox5.checked and checkbox5.enabled) then label3.Enabled:=true else label3.Enabled:=false;
     tabsheet3.tabvisible:=rootenabled;
+    edit1.text:=inttostr(rollnumber);
+    edit2.text:=inttostr(animateinterval);
+    Label7.Caption:='动画总时长将为 '+inttostr(rollnumber*animateinterval)+' 毫秒';
+    if not(form1.menuitem5.checked) then tabsheet5.TabVisible:=false;
+end;
+
+procedure TForm2.TabSheet1ContextPopup(Sender: TObject; MousePos: TPoint;
+  var Handled: Boolean);
+begin
+
 end;
 
 procedure TForm2.TabSheet3ContextPopup(Sender: TObject; MousePos: TPoint;
@@ -90,6 +116,7 @@ begin
     encrypthash:=checkbox5.checked;
     names.LoadFromFile(namespath);
     i:=names.count;
+    rollnumber:=strtoint(edit1.Text);
     form2.close;
 end;
 
@@ -120,13 +147,23 @@ begin
     if (checkbox5.checked and checkbox5.enabled) then label3.Enabled:=true else label3.Enabled:=false
 end;
 
+procedure TForm2.Edit1Change(Sender: TObject);
+begin
+if (edit1.text<>'') and (edit2.text<>'') then Label7.Caption:='动画总时长将为 '+inttostr(strtoint(edit1.text)*strtoint(edit2.text))+' 毫秒';
+end;
+
+procedure TForm2.Edit2Change(Sender: TObject);
+begin
+
+end;
+
 procedure TForm2.EditButton1ButtonClick(Sender: TObject);
 begin
     if MD5Print(MD5String(EditButton1.Text))=passwordmd5 then begin
       Tabsheet3.TabVisible:=true;
       pagecontrol1.ActivePage:=tabsheet3;
       tabsheet4.TabVisible:=false;
-    end else showmessage('密码错误，请重试。');
+    end else label5.caption:='密码错误，请重试。'
 end;
 
 procedure TForm2.EditButton1Change(Sender: TObject);
@@ -142,7 +179,7 @@ end;
 procedure TForm2.EditButton1KeyUp(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-
+    if key=13 then EditButton1ButtonClick(application);
 end;
 
 end.

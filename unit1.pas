@@ -51,11 +51,11 @@ var
   Form1: TForm1;
   names:Tstringlist;
   namespath,settingspath,nameshash,s,nameslasthash:string;
-  rollnumber,k,i,j,animateduration,animatetimes,animateintervalmin,rollnumbermin,encryptkey,hashencryptlength:integer;
+  rollnumber,k,i,j{,animateduration,animatetimes,animateintervalmin,rollnumbermin},encryptkey,hashencryptlength,animateinterval:integer;
   animate,savefontsetting,saveanimatesetting,savewindowsize,whetherhash,encrypthash:boolean;
   settings:tinifile;
 implementation
-uses unit2;
+uses unit2,unit6;
 {$R *.lfm}
 
 { TForm1 }
@@ -66,8 +66,7 @@ end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
 begin
-   names.destroy;
-   settings.Destroy;
+
 end;
 
 procedure TForm1.FormShow(Sender: TObject);
@@ -112,7 +111,8 @@ end;
 
 procedure TForm1.Timer1StartTimer(Sender: TObject);
 begin
-  k:=0
+  k:=0;
+  timer1.interval:=animateinterval;
 end;
 
 procedure TForm1.Timer1StopTimer(Sender: TObject);
@@ -121,13 +121,16 @@ begin
 end;
 
 procedure TForm1.Timer1Timer(Sender: TObject);
+var tmp:integer;
 begin
-
-  j:=random(i);
-  Label1.Caption:=names.Strings[j];
+  tmp:=random(i);
+  Label1.Caption:=names.Strings[tmp];
   application.ProcessMessages;
   k:=k+1;
-  if k>rollnumber then timer1.Enabled:=false;
+  if k>rollnumber then begin
+  Label1.Caption:=names.Strings[j];
+  timer1.Enabled:=false;
+  end;
 end;
 
 procedure TForm1.Button1Click(Sender: TObject);
@@ -136,7 +139,10 @@ begin
   j:=random(i);
   Label1.Caption:=names.Strings[j];
   }
-  if animate then timer1.Enabled:=true else begin
+  if animate then begin
+    j:=random(i);
+  timer1.Enabled:=true;
+  end else begin
   j:=random(i);
   Label1.Caption:=names.Strings[j];
   end;
@@ -144,48 +150,8 @@ end;
 
 procedure TForm1.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
-  if savewindowsize then begin
-  settings.WriteInteger('window','top',Form1.top);
-  settings.WriteInteger('window','left',Form1.left);
-  settings.WriteInteger('window','width',Form1.Width);
-  settings.WriteInteger('window','height',Form1.Height);
-  settings.WriteInteger('window','WindowState',Integer(Form1.WindowState));
-  end;
-
-  settings.WriteString('paths','namespath',namespath);
-  settings.WriteBool('font','whethersave',savefontsetting);
-  settings.WriteBool('animate','whethersave',saveanimatesetting);
-  settings.WriteBool('window','whethersave',savewindowsize);
-  settings.WriteBool('hash','whetherhash',whetherhash);
-  settings.WriteBool('hash','encrypthash',encrypthash);
-  if savefontsetting then begin
-  settings.writeinteger('font','size',fontdialog1.Font.Size);
-  settings.writeinteger('font','color',fontdialog1.Font.color);
-  settings.writestring('font','fontname',fontdialog1.Font.name);
-  end;
-  if saveanimatesetting then begin
-  settings.WriteBool('animate','switch',animate);
-  settings.WriteInteger('advanced','animte.animteduration',animateduration);
-  settings.WriteInteger('advanced','animate.rollnumbermin',rollnumbermin);
-  settings.WriteInteger('advanced','animate.animateintervalmin',animateintervalmin);
-  end;
-  if (whetherhash xor encrypthash) and whetherhash then begin
-  settings.WriteString('hash','namesmd5',nameshash);
-  end;
-  if encrypthash then begin
-  settings.writeinteger('hash','encryptkey',encryptkey);
-  hashencryptlength:=0;
-  nameshash:=MD5Print(MD5File(namespath));
-  for i:= 1 to length(nameshash) do begin
-    str(i,s);
-    s:='e'+s;
-    //showmessage(s);
-    settings.writeinteger('hash',s,ord(nameshash[i]) xor encryptkey) ;
-    hashencryptlength:=hashencryptlength+1;
-  end;
-  settings.writeinteger('hash','hashencryptlength',hashencryptlength);
-  end;
-  settings.WriteString('password','md5',passwordmd5);
+  Exitingform:=Texitingform.Create(Application);
+  exitingform.show;
 end;
 
 

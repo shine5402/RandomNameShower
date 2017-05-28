@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ComCtrls,
-  StdCtrls,unit1,unit2,unit3,unit4,inifiles,md5,windows;
+  StdCtrls,inifiles,md5,windows,unit1,unit2;
 const
   UM_CHECKFIRSTRUN = WM_USER + 100;
 
@@ -30,16 +30,15 @@ type
 
 var
   LoadingForm: TLoadingForm;
-  first:boolean;
+  firstrun:boolean;
 implementation
-
 {$R *.lfm}
 
 { TLoadingForm }
 
 procedure TLoadingForm.FormCreate(Sender: TObject);
 begin
-  first:=true;
+  firstrun:=true;
   PostMessage(Handle, UM_CHECKFIRSTRUN, 0, 0);
 end;
 
@@ -49,9 +48,9 @@ begin
 end;
 procedure TLoadingform.UmCheckFirstRun(var Message: TMessage);
 begin
-  if first then begin
+  if firstrun then begin
 loadingform.label1.caption:='加载上一次的设置……';
-progressbar1.position:=20;
+
 rootenabled:=false;
 names:=Tstringlist.Create;
 settingspath:='./settings.ini';
@@ -64,15 +63,17 @@ saveanimatesetting:=settings.ReadBool('animate','whethersave',true);
 savewindowsize:=settings.ReadBool('window','whethersave',false);
 whetherhash:=settings.readbool('hash','whetherhash',false);
 encrypthash:=settings.readbool('hash','encrypthash',false);
-encryptkey:=settings.readinteger('hash','encryptkey',1234);
-hashencryptlength:=settings.readinteger('hash','hashencryptlength',0);
+
+progressbar1.position:=20;
 loadingform.label1.caption:='应用设置……';
-progressbar1.position:=40;
+
 if saveanimatesetting then begin
 animate:=settings.ReadBool('animate','switch',false);
-animateduration:=settings.ReadInteger('advanced','animte.animteduration',2000);
+{animateduration:=settings.ReadInteger('advanced','animte.animteduration',2000);
 rollnumbermin:=settings.ReadInteger('advanced','animate.rollnumbermin',20);
-animateintervalmin:=settings.ReadInteger('advanced','animate.animateintervalmin',1);
+animateintervalmin:=settings.ReadInteger('advanced','animate.animateintervalmin',1);  }
+rollnumber:=settings.readinteger('animate','rollnumber',30);
+animateinterval:=settings.readinteger('animate','animateinterval',50);
 end;
 if savefontsetting then begin
 form1.fontdialog1.Font.Size:=settings.ReadInteger('font','size',18);
@@ -80,11 +81,14 @@ form1.fontdialog1.Font.color:=settings.readinteger('font','color',clDefault);
 form1.fontdialog1.Font.name:=settings.Readstring('font','fontname','微软雅黑');
 form1.label1.Font:=form1.fontdialog1.Font;
 end;
+progressbar1.position:=40;
 loadingform.label1.caption:='校验文件Hash值，如果卡顿超过3分钟，请退出重试……';
-progressbar1.position:=60;
+
 if encrypthash then begin
 nameshash:=MD5Print(MD5File(namespath));
 nameslasthash:='';
+encryptkey:=settings.readinteger('hash','encryptkey',1234);
+hashencryptlength:=settings.readinteger('hash','hashencryptlength',0);
 for i:= 1 to hashencryptlength do begin
   str(i,s);
   s:='e'+s;
@@ -112,21 +116,22 @@ application.Terminate;
 end;
 end;
 if passwordmd5='25d55ad283aa400af464c76d713c07ad' then showmessage('您的管理员密码目前为初始密码。请进入选项进行修改。');
+progressbar1.position:=60;
 loadingform.label1.caption:='应用设置……';
-progressbar1.position:=80;
+
 form1.MenuItem5.Checked:=animate;
-rollnumber:=names.count+1;
+{rollnumber:=names.count+1;
 if rollnumber < rollnumbermin then rollnumber:=rollnumbermin;
-if animateduration div rollnumber <> 0 then form1.Timer1.Interval:=animateduration div rollnumber else form1.Timer1.Interval:=animateintervalmin;
+if animateduration div rollnumber <> 0 then form1.Timer1.Interval:=animateduration div rollnumber else form1.Timer1.Interval:=animateintervalmin;}
   i:=names.count;
 k:=0;
 j:=0;
 randomize;
+progressbar1.position:=80;
 loadingform.label1.caption:='加载完成！';
 progressbar1.position:=100;
 form1.show;
 loadingform.hide;
-loadingform.release;
 end;
 end;
 procedure TLoadingForm.ProgressBar1Exit(Sender: TObject);
