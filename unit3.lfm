@@ -10,7 +10,7 @@ object AboutForm: TAboutForm
   Constraints.MinHeight = 176
   Constraints.MinWidth = 616
   OnCreate = FormCreate
-  LCLVersion = '1.6.2.0'
+  LCLVersion = '1.6.4.0'
   object Image1: TImage
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
@@ -256,9 +256,9 @@ object AboutForm: TAboutForm
     Left = 111
     Height = 17
     Top = 63
-    Width = 247
+    Width = 70
     BorderSpacing.Top = 5
-    Caption = '版权所有 shine_5402(shine_5402@126.com)'
+    Caption = '版本：1.14.4'
     ParentColor = False
     OnClick = Label2Click
   end
@@ -654,5 +654,18 @@ object AboutForm: TAboutForm
         DC61E208718789FF01B8B7014B37905BFE0000000049454E44AE426082
       }
     end
+  end
+  object Label3: TLabel
+    AnchorSideLeft.Control = Label1
+    AnchorSideTop.Control = Label2
+    AnchorSideTop.Side = asrBottom
+    Left = 111
+    Height = 17
+    Top = 85
+    Width = 247
+    BorderSpacing.Top = 5
+    Caption = '版权所有 shine_5402(shine_5402@126.com)'
+    ParentColor = False
+    OnClick = Label2Click
   end
 end

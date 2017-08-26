@@ -22,6 +22,7 @@ type
     Label1: TLabel;
     Label2: TLabel;
     fileVersion: TLabel;
+    Label3: TLabel;
     Memo1: TMemo;
     Panel1: TPanel;
     Panel2: TPanel;

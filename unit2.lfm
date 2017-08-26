@@ -38,13 +38,13 @@ object Form2: TForm2
     Height = 192
     Top = 5
     Width = 353
-    ActivePage = TabSheet5
+    ActivePage = TabSheet1
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Left = 5
     BorderSpacing.Top = 5
     BorderSpacing.Right = 5
     BorderSpacing.Bottom = 5
-    TabIndex = 2
+    TabIndex = 0
     TabOrder = 1
     object TabSheet1: TTabSheet
       Caption = '设置保存相关'
@@ -130,6 +130,7 @@ object Form2: TForm2
       Caption = '动画设置'
       ClientHeight = 162
       ClientWidth = 345
+      OnContextPopup = TabSheet5ContextPopup
       object Label4: TLabel
         Left = 16
         Height = 17
@@ -202,7 +203,7 @@ object Form2: TForm2
     object TabSheet3: TTabSheet
       Caption = '防暗箱设置'
       ClientHeight = 162
-      ClientWidth = 323
+      ClientWidth = 345
       OnContextPopup = TabSheet3ContextPopup
       TabVisible = False
       object CheckBox4: TCheckBox
@@ -260,7 +261,7 @@ object Form2: TForm2
         AnchorSideRight.Side = asrBottom
         AnchorSideBottom.Control = TabSheet3
         AnchorSideBottom.Side = asrBottom
-        Left = 245
+        Left = 267
         Height = 25
         Top = 137
         Width = 78
@@ -276,7 +277,7 @@ object Form2: TForm2
         Left = 177
         Height = 25
         Top = 137
-        Width = 63
+        Width = 85
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Right = 5
         Caption = '上锁'
@@ -288,6 +289,7 @@ object Form2: TForm2
       Caption = '防暗箱设置'
       ClientHeight = 162
       ClientWidth = 345
+      OnContextPopup = TabSheet4ContextPopup
       object EditButton1: TEditButton
         AnchorSideLeft.Control = TabSheet4
         AnchorSideTop.Control = TabSheet4

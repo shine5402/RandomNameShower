@@ -56,6 +56,10 @@ type
       var Handled: Boolean);
     procedure TabSheet3ContextPopup(Sender: TObject; MousePos: TPoint;
       var Handled: Boolean);
+    procedure TabSheet4ContextPopup(Sender: TObject; MousePos: TPoint;
+      var Handled: Boolean);
+    procedure TabSheet5ContextPopup(Sender: TObject; MousePos: TPoint;
+      var Handled: Boolean);
   private
     { private declarations }
   public
@@ -64,7 +68,7 @@ type
 
 var
   Form2: TForm2;
-  rootenabled:boolean;
+  rootenabled,ifenter:boolean;
   passwordmd5:string;
 implementation
 
@@ -106,8 +110,21 @@ begin
 
 end;
 
+procedure TForm2.TabSheet4ContextPopup(Sender: TObject; MousePos: TPoint;
+  var Handled: Boolean);
+begin
+
+end;
+
+procedure TForm2.TabSheet5ContextPopup(Sender: TObject; MousePos: TPoint;
+  var Handled: Boolean);
+begin
+
+end;
+
 procedure TForm2.Button1Click(Sender: TObject);
 begin
+    if not(ifenter) then begin
     namespath:=filenameedit1.Text;
     savefontsetting:=checkbox1.Checked;
     saveanimatesetting:=checkbox2.Checked;
@@ -119,6 +136,7 @@ begin
     rollnumber:=strtoint(edit1.Text);
     animateinterval:=strtoint(edit2.Text);
     form2.close;
+    end else ifenter:=false;
 end;
 
 procedure TForm2.Button2Click(Sender: TObject);
@@ -164,7 +182,7 @@ begin
       Tabsheet3.TabVisible:=true;
       pagecontrol1.ActivePage:=tabsheet3;
       tabsheet4.TabVisible:=false;
-    end else label5.caption:='密码错误，请重试。'
+    end else label5.caption:='密码错误，请重试。';
 end;
 
 procedure TForm2.EditButton1Change(Sender: TObject);
@@ -180,7 +198,11 @@ end;
 procedure TForm2.EditButton1KeyUp(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-    if key=13 then EditButton1ButtonClick(application);
+
+    if key=13 then begin
+      ifenter:=true;
+      EditButton1ButtonClick(application);
+    end;
 end;
 
 end.

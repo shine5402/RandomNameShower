@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 426
+  Left = 510
   Height = 327
-  Top = 130
+  Top = 129
   Width = 373
   Caption = '随机点名器'
   ClientHeight = 307
