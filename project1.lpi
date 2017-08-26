@@ -12,7 +12,6 @@
       <XPManifest>
         <DpiAware Value="True"/>
       </XPManifest>
-      <Icon Value="0"/>
     </General>
     <i18n>
       <EnableI18N LFM="False"/>
@@ -20,8 +19,7 @@
     <VersionInfo>
       <UseVersionInfo Value="True"/>
       <MajorVersionNr Value="1"/>
-      <MinorVersionNr Value="14"/>
-      <RevisionNr Value="4"/>
+      <MinorVersionNr Value="15"/>
       <Language Value="0804"/>
       <StringTable Comments="一个简单好用的随机点名器" FileDescription="一个简单好用的随机点名器" LegalCopyright="GNU GPL V3" OriginalFilename="随机点名器" ProductName="随机点名器" ProductVersion="1"/>
     </VersionInfo>
@@ -32,7 +30,7 @@
           <Version Value="11"/>
           <PathDelim Value="\"/>
           <Target>
-            <Filename Value="project1-release_x86"/>
+            <Filename Value="rns-release_x86"/>
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
@@ -132,7 +130,7 @@
     <Version Value="11"/>
     <PathDelim Value="\"/>
     <Target>
-      <Filename Value="project1-debug"/>
+      <Filename Value="rns-debug"/>
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>

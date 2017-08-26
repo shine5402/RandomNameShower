@@ -126,6 +126,10 @@ procedure TForm2.Button1Click(Sender: TObject);
 begin
     if not(ifenter) then begin
     namespath:=filenameedit1.Text;
+    if not(fileexists(namespath)) then begin
+    showmessage('找不到您所指定的名单文件。还请检查是否输入错误。');
+    exit;
+    end;
     savefontsetting:=checkbox1.Checked;
     saveanimatesetting:=checkbox2.Checked;
     savewindowsize:=checkbox3.Checked;

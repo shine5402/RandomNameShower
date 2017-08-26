@@ -70,7 +70,7 @@ end;
 
 procedure TAboutForm.Image2Click(Sender: TObject);
 begin
-   shellexecute(handle,'open','http://www.gnu.org/licenses/',nil,nil,1);
+   shellexecute(handle,'open','https://www.gnu.org/licenses/gpl.html',nil,nil,1);
 end;
 
 procedure TAboutForm.Image3Click(Sender: TObject);

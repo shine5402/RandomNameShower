@@ -50,12 +50,15 @@ procedure TLoadingform.UmCheckFirstRun(var Message: TMessage);
 begin
   if firstrun then begin
 loadingform.label1.caption:='加载上一次的设置……';
-
 rootenabled:=false;
 names:=Tstringlist.Create;
 settingspath:='./settings.ini';
 settings:=Tinifile.create(settingspath);
 namespath:=settings.readstring('paths','namespath','./names.txt');
+if not(fileexists(namespath)) then begin
+showmessage('找不到名单文件，程序无法运作，即将退出。');
+application.Terminate;
+end;
 passwordmd5:=settings.readstring('password','md5','25d55ad283aa400af464c76d713c07ad');
 names.LoadFromFile(namespath);
 savefontsetting:=settings.ReadBool('font','whethersave',true);
