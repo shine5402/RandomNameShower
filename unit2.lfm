@@ -38,13 +38,13 @@ object Form2: TForm2
     Height = 192
     Top = 5
     Width = 353
-    ActivePage = TabSheet1
+    ActivePage = TabSheet5
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Left = 5
     BorderSpacing.Top = 5
     BorderSpacing.Right = 5
     BorderSpacing.Bottom = 5
-    TabIndex = 0
+    TabIndex = 2
     TabOrder = 1
     object TabSheet1: TTabSheet
       Caption = '设置保存相关'

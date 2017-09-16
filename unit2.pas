@@ -95,7 +95,7 @@ begin
     edit1.text:=inttostr(rollnumber);
     edit2.text:=inttostr(animateinterval);
     Label7.Caption:='动画总时长将为 '+inttostr(rollnumber*animateinterval)+' 毫秒';
-    if not(form1.menuitem5.checked) then tabsheet5.TabVisible:=false;
+    if not(form1.menuitem5.checked) then tabsheet5.TabVisible:=false else tabsheet5.TabVisible:=true;
 end;
 
 procedure TForm2.TabSheet1ContextPopup(Sender: TObject; MousePos: TPoint;
@@ -141,6 +141,9 @@ begin
     animateinterval:=strtoint(edit2.Text);
     form2.close;
     end else ifenter:=false;
+    editbutton1.Text:='';
+  tabsheet3.TabVisible:=false;
+  tabsheet4.TabVisible:=true;
 end;
 
 procedure TForm2.Button2Click(Sender: TObject);
@@ -182,6 +185,7 @@ end;
 
 procedure TForm2.EditButton1ButtonClick(Sender: TObject);
 begin
+    label5.caption:='';
     if MD5Print(MD5String(EditButton1.Text))=passwordmd5 then begin
       Tabsheet3.TabVisible:=true;
       pagecontrol1.ActivePage:=tabsheet3;

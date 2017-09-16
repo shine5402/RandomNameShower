@@ -258,7 +258,7 @@ object AboutForm: TAboutForm
     Top = 63
     Width = 70
     BorderSpacing.Top = 5
-    Caption = '版本：1.15.0'
+    Caption = '版本：1.16.0'
     ParentColor = False
     OnClick = Label2Click
   end
