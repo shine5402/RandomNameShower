@@ -19,6 +19,7 @@ type
     Label1: TLabel;
     Label2: TLabel;
     procedure Button1Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
@@ -60,6 +61,11 @@ begin
   else
     ShowMessage('密码错误，请重试。');
 end;
+
+procedure TForm3.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+begin
+end;
+
 procedure TForm3.passwdmd5(md5 : string);
 begin
    passwordmd5 := md5;

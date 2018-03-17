@@ -7,6 +7,7 @@ object Form3: TForm3
   Caption = '密码修改'
   ClientHeight = 114
   ClientWidth = 394
+  OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poScreenCenter

@@ -18,7 +18,9 @@ type
   TExitingForm = class(TForm)
     Label1: TLabel;
     ProgressBar1: TProgressBar;
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
     { private declarations }
@@ -41,6 +43,17 @@ procedure TExitingForm.FormCreate(Sender: TObject);
 begin
   firstexit := True;
   PostMessage(Handle, UM_CHECKFIRSTRUN, 0, 0);
+end;
+
+procedure TExitingForm.FormDestroy(Sender: TObject);
+begin
+  ExitingForm := nil;
+end;
+
+procedure TExitingForm.FormClose(Sender: TObject; var CloseAction: TCloseAction
+  );
+begin
+ CloseAction := caFree;
 end;
 
 procedure TExitingForm.FormShow(Sender: TObject);
@@ -111,8 +124,8 @@ begin
     settings.WriteString('password', 'md5', passwordmd5);
     progressbar1.position := 100;
     label1.Caption := '完成！';
-    names.Destroy;
-    settings.Destroy;
+    names.Free;
+    settings.Free;
     application.Terminate;
   end;
 end;

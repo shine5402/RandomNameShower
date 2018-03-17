@@ -28,6 +28,7 @@ type
     procedure Button2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure NextButtonClick(Sender: TObject);
   private
@@ -116,11 +117,17 @@ begin
 LoadingForm.Show();
 LoadingForm.firstrunformdone();
   end;
+  CloseAction := cafree;
 end;
 
 procedure TFirstRunForm.FormCreate(Sender: TObject);
 begin
 
+end;
+
+procedure TFirstRunForm.FormDestroy(Sender: TObject);
+begin
+   FirstRunForm := nil;
 end;
 
 procedure TFirstRunForm.BackButtonClick(Sender: TObject);

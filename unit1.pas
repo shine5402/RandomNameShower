@@ -100,7 +100,16 @@ end;
 
 procedure TForm1.MenuItem4Click(Sender: TObject);
 begin
-  aboutform.Show;
+ AboutForm := TAboutForm.Create(Application);//动态创建窗体
+  try
+    AboutForm.ShowModal;//显示模式窗体
+  finally
+    AboutForm.Free; //释放窗体实例
+    //ShowMessage(BoolToStr(ModalForm = nil));
+    AboutForm := nil; //把窗体变量设为nil
+    //ShowMessage(BoolToStr(ModalForm = nil));
+  end;
+ // aboutform.Show;
 end;
 
 procedure TForm1.MenuItem5Click(Sender: TObject);
@@ -116,7 +125,16 @@ end;
 
 procedure TForm1.MenuItem7Click(Sender: TObject);
 begin
-  form2.Show;
+  Form2 := TForm2.Create(Application);//动态创建窗体
+  try
+    Form2.ShowModal;//显示模式窗体
+  finally
+    Form2.Free; //释放窗体实例
+    //ShowMessage(BoolToStr(ModalForm = nil));
+    Form2 := nil; //把窗体变量设为nil
+    //ShowMessage(BoolToStr(ModalForm = nil));
+  end;
+  //form2.Show;
 end;
 
 procedure TForm1.MenuItem8Click(Sender: TObject);

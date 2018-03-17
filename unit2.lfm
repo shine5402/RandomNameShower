@@ -13,6 +13,7 @@ object Form2: TForm2
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poScreenCenter
+  ShowInTaskBar = stAlways
   LCLVersion = '1.8.0.6'
   object Button1: TButton
     AnchorSideLeft.Control = Owner
@@ -40,13 +41,13 @@ object Form2: TForm2
     Height = 192
     Top = 5
     Width = 353
-    ActivePage = TabSheet3
+    ActivePage = TabSheet1
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Left = 5
     BorderSpacing.Top = 5
     BorderSpacing.Right = 5
     BorderSpacing.Bottom = 5
-    TabIndex = 3
+    TabIndex = 0
     TabOrder = 1
     object TabSheet1: TTabSheet
       Caption = '设置保存相关'

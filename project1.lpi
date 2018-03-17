@@ -10,7 +10,8 @@
       <ResourceType Value="res"/>
       <UseXPManifest Value="True"/>
       <XPManifest>
-        <DpiAware Value="True"/>
+        <DpiAware Value="True/PM"/>
+        <TextDesc Value="一个用于随机点名的小工具"/>
       </XPManifest>
       <Icon Value="0"/>
     </General>
@@ -21,8 +22,7 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="1"/>
-      <MinorVersionNr Value="17"/>
-      <RevisionNr Value="2"/>
+      <MinorVersionNr Value="18"/>
       <Language Value="0804"/>
       <StringTable Comments="一个简单好用的随机点名器" FileDescription="一个简单好用的随机点名器" LegalCopyright="GNU GPL V3" OriginalFilename="随机点名器" ProductName="随机点名器" ProductVersion="1"/>
     </VersionInfo>
@@ -139,6 +139,7 @@
         <Filename Value="unit8.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="ConfusionSettingsForm"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit8"/>
       </Unit8>

@@ -158,7 +158,15 @@ end;
 
 procedure TForm2.Button2Click(Sender: TObject);
 begin
-  form3.Show;
+  Form3 := TForm3.Create(Application);//动态创建窗体
+  try
+    Form3.ShowModal;//显示模式窗体
+  finally
+    Form3.Free; //释放窗体实例
+    //ShowMessage(BoolToStr(ModalForm = nil));
+    Form3 := nil; //把窗体变量设为nil
+    //ShowMessage(BoolToStr(ModalForm = nil));
+  end;
 end;
 
 procedure TForm2.Button3Click(Sender: TObject);
@@ -199,7 +207,16 @@ end;
 
 procedure TForm2.ConfusionSettingsButtonClick(Sender: TObject);
 begin
-  ConfusionSettingsForm.Show();
+  ConfusionSettingsForm := TConfusionSettingsForm.Create(Application);//动态创建窗体
+  try
+    ConfusionSettingsForm.ShowModal;//显示模式窗体
+  finally
+    ConfusionSettingsForm.Free; //释放窗体实例
+    //ShowMessage(BoolToStr(ModalForm = nil));
+    ConfusionSettingsForm := nil; //把窗体变量设为nil
+    //ShowMessage(BoolToStr(ModalForm = nil));
+  end;
+ // ConfusionSettingsForm.Show();
 end;
 
 procedure TForm2.Edit1Change(Sender: TObject);

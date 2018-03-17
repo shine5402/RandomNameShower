@@ -8,7 +8,9 @@ object ExitingForm: TExitingForm
   Caption = '正在退出…'
   ClientHeight = 74
   ClientWidth = 434
+  OnClose = FormClose
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   OnShow = FormShow
   Position = poScreenCenter
   LCLVersion = '1.8.0.6'
