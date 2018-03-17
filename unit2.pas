@@ -16,6 +16,7 @@ type
     Button1: TButton;
     Button2: TButton;
     Button3: TButton;
+    xorButton: TButton;
     CheckBox1: TCheckBox;
     CheckBox2: TCheckBox;
     CheckBox3: TCheckBox;
@@ -65,6 +66,7 @@ type
   private
 { private declarations }
     procedure CheckPassword();
+    procedure TabSheet3SettingCheck();
   public
     { public declarations }
   end;
@@ -93,18 +95,7 @@ begin
   checkbox3.Checked := savewindowsize;
   checkbox4.Checked := whetherhash;
   checkbox5.Checked := encrypthash;
-  if not (checkbox4.Checked) then
-    checkbox5.Enabled := False
-  else
-    checkbox5.Enabled := True;
-  if checkbox4.Checked then
-    label1.Enabled := True
-  else
-    label1.Enabled := False;
-  if (checkbox5.Checked and checkbox5.Enabled) then
-    label3.Enabled := True
-  else
-    label3.Enabled := False;
+  TabSheet3SettingCheck();
   tabsheet3.tabvisible := rootenabled;
   Tabsheet4.TabVisible:= not(rootenabled);
   edit1.Text := IntToStr(rollnumber);
@@ -176,8 +167,7 @@ begin
   tabsheet4.Show();
   pagecontrol1.ActivePage := tabsheet4;
 end;
-
-procedure TForm2.CheckBox4Change(Sender: TObject);
+procedure Tform2.TabSheet3SettingCheck();
 begin
   if not (checkbox4.Checked) then
     checkbox5.Enabled := False
@@ -187,26 +177,23 @@ begin
     label1.Enabled := True
   else
     label1.Enabled := False;
-  if (checkbox5.Checked and checkbox5.Enabled) then
-    label3.Enabled := True
-  else
-    label3.Enabled := False;
+  if (checkbox5.Checked and checkbox5.Enabled) then begin
+    label3.Enabled := True;
+    xorButton.Enabled := True;
+  end
+  else  begin
+    label3.Enabled := False; xorButton.Enabled := False;
+  end;
+end;
+
+procedure TForm2.CheckBox4Change(Sender: TObject);
+begin
+  TabSheet3SettingCheck();
 end;
 
 procedure TForm2.CheckBox5Change(Sender: TObject);
 begin
-  if not (checkbox4.Checked) then
-    checkbox5.Enabled := False
-  else
-    checkbox5.Enabled := True;
-  if checkbox4.Checked then
-    label1.Enabled := True
-  else
-    label1.Enabled := False;
-  if (checkbox5.Checked and checkbox5.Enabled) then
-    label3.Enabled := True
-  else
-    label3.Enabled := False;
+ TabSheet3SettingCheck();
 end;
 
 procedure TForm2.Edit1Change(Sender: TObject);

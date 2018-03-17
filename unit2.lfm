@@ -1,7 +1,7 @@
 object Form2: TForm2
-  Left = 598
+  Left = 537
   Height = 234
-  Top = 399
+  Top = 356
   Width = 363
   BorderStyle = bsDialog
   Caption = '选项'
@@ -40,13 +40,13 @@ object Form2: TForm2
     Height = 192
     Top = 5
     Width = 353
-    ActivePage = TabSheet1
+    ActivePage = TabSheet3
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Left = 5
     BorderSpacing.Top = 5
     BorderSpacing.Right = 5
     BorderSpacing.Bottom = 5
-    TabIndex = 0
+    TabIndex = 3
     TabOrder = 1
     object TabSheet1: TTabSheet
       Caption = '设置保存相关'
@@ -286,6 +286,19 @@ object Form2: TForm2
         Caption = '上锁'
         OnClick = Button3Click
         TabOrder = 3
+      end
+      object xorButton: TButton
+        AnchorSideLeft.Control = Label3
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = Label3
+        AnchorSideTop.Side = asrCenter
+        Left = 246
+        Height = 25
+        Top = 30
+        Width = 75
+        BorderSpacing.Left = 5
+        Caption = 'xor 选项'
+        TabOrder = 4
       end
     end
     object TabSheet4: TTabSheet
