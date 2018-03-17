@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  StdCtrls,shellapi;
+  StdCtrls, shellapi;
 
 type
 
@@ -70,17 +70,19 @@ end;
 
 procedure TAboutForm.Image2Click(Sender: TObject);
 begin
-   shellexecute(handle,'open','https://www.gnu.org/licenses/gpl.html',nil,nil,1);
+  shellexecute(handle, 'open', 'https://www.gnu.org/licenses/gpl.html', nil, nil, 1);
 end;
 
 procedure TAboutForm.Image3Click(Sender: TObject);
 begin
-  shellexecute(handle,'open','https://github.com/shine5402/RandomNameShower',nil,nil,1);
+  shellexecute(handle, 'open', 'https://github.com/shine5402/RandomNameShower',
+    nil, nil, 1);
 end;
 
 procedure TAboutForm.Image4Click(Sender: TObject);
 begin
-  shellexecute(handle,'open','https://github.com/shine5402/RandomNameShower',nil,nil,1);
+  shellexecute(handle, 'open', 'https://github.com/shine5402/RandomNameShower',
+    nil, nil, 1);
 end;
 
 procedure TAboutForm.Button1Click(Sender: TObject);
@@ -90,8 +92,8 @@ end;
 
 procedure TAboutForm.Button2Click(Sender: TObject);
 begin
-     shellexecute(handle,'open','https://github.com/shine5402/RandomNameShower/releases',nil,nil,1);
+  shellexecute(handle, 'open', 'https://github.com/shine5402/RandomNameShower/releases',
+    nil, nil, 1);
 end;
 
 end.
-

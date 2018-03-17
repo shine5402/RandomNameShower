@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-   Menus, ExtCtrls,unit3,IniFiles,md5;
+  Menus, ExtCtrls, unit3, IniFiles;
 
 type
 
@@ -45,20 +45,30 @@ type
     { private declarations }
   public
     { public declarations }
+    procedure givenames(newnames : TStrings);
   end;
 
 var
   Form1: TForm1;
-  names:Tstringlist;
-  namespath,settingspath,nameshash,s,nameslasthash:string;
-  rollnumber,k,i,j{,animateduration,animatetimes,animateintervalmin,rollnumbermin},encryptkey,hashencryptlength,animateinterval:integer;
-  animate,savefontsetting,saveanimatesetting,savewindowsize,whetherhash,encrypthash:boolean;
-  settings:tinifile;
+  names: TStringList;
+  namespath, settingspath, nameshash, s, nameslasthash: string;
+  rollnumber, k, i, j{,animateduration,animatetimes,animateintervalmin,rollnumbermin},
+  encryptkey, hashencryptlength, animateinterval: integer;
+  animate, savefontsetting, saveanimatesetting, savewindowsize,
+  whetherhash, encrypthash: boolean;
+  settings: tinifile;
+
 implementation
-uses unit2,unit6;
+
+uses unit2, unit6;
+
 {$R *.lfm}
 
 { TForm1 }
+procedure Tform1.givenames(newnames : TStrings);
+begin
+  names.Assign(newnames);
+end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
@@ -71,27 +81,32 @@ end;
 
 procedure TForm1.FormShow(Sender: TObject);
 begin
-  if savewindowsize then begin
-  Form1.SetBounds(settings.ReadInteger('window','left',169),settings.ReadInteger('window','top',491),settings.ReadInteger('window','width',339),settings.ReadInteger('window','height',274));
+  if savewindowsize then
+  begin
+    Form1.SetBounds(settings.ReadInteger('window', 'left', 169),
+      settings.ReadInteger('window', 'top', 491), settings.ReadInteger(
+      'window', 'width', 339), settings.ReadInteger('window', 'height', 274));
 
-  Form1.WindowState:=TWindowState(settings.ReadInteger('window','WindowState',Integer(wsNormal)));
+    Form1.WindowState := TWindowState(settings.ReadInteger(
+      'window', 'WindowState', integer(wsNormal)));
   end;
 end;
 
 procedure TForm1.MenuItem3Click(Sender: TObject);
 begin
-  if fontdialog1.Execute then label1.Font:=fontdialog1.Font;
+  if fontdialog1.Execute then
+    label1.Font := fontdialog1.Font;
 end;
 
 procedure TForm1.MenuItem4Click(Sender: TObject);
 begin
-    aboutform.show;
+  aboutform.Show;
 end;
 
 procedure TForm1.MenuItem5Click(Sender: TObject);
 begin
-  animate:=not animate;
-  MenuItem5.checked:=animate;
+  animate := not animate;
+  MenuItem5.Checked := animate;
 end;
 
 procedure TForm1.MenuItem6Click(Sender: TObject);
@@ -106,30 +121,32 @@ end;
 
 procedure TForm1.MenuItem8Click(Sender: TObject);
 begin
-  Label1.Caption:='';
+  Label1.Caption := '';
 end;
 
 procedure TForm1.Timer1StartTimer(Sender: TObject);
 begin
-  k:=0;
-  timer1.interval:=animateinterval;
+  k := 0;
+  timer1.interval := animateinterval;
 end;
 
 procedure TForm1.Timer1StopTimer(Sender: TObject);
 begin
-  k:=0
+  k := 0;
 end;
 
 procedure TForm1.Timer1Timer(Sender: TObject);
-var tmp:integer;
+var
+  tmp: integer;
 begin
-  tmp:=random(i);
-  Label1.Caption:=names.Strings[tmp];
+  tmp := random(i);
+  Label1.Caption := names.Strings[tmp];
   application.ProcessMessages;
-  k:=k+1;
-  if k>rollnumber then begin
-  Label1.Caption:=names.Strings[j];
-  timer1.Enabled:=false;
+  k := k + 1;
+  if k > rollnumber then
+  begin
+    Label1.Caption := names.Strings[j];
+    timer1.Enabled := False;
   end;
 end;
 
@@ -139,22 +156,24 @@ begin
   j:=random(i);
   Label1.Caption:=names.Strings[j];
   }
-  if animate then begin
-    j:=random(i);
-  timer1.Enabled:=true;
-  end else begin
-  j:=random(i);
-  Label1.Caption:=names.Strings[j];
+  if animate then
+  begin
+    j := random(i);
+    timer1.Enabled := True;
+  end
+  else
+  begin
+    j := random(i);
+    Label1.Caption := names.Strings[j];
   end;
 end;
 
 procedure TForm1.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
-  Exitingform:=Texitingform.Create(Application);
-  exitingform.show;
+  Exitingform := Texitingform.Create(Application);
+  exitingform.Show;
 end;
 
 
 
 end.
-

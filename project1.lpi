@@ -72,7 +72,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="7">
+    <Units Count="8">
       <Unit0>
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -125,6 +125,14 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit6"/>
       </Unit6>
+      <Unit7>
+        <Filename Value="unit7.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FirstRunForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Unit7"/>
+      </Unit7>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

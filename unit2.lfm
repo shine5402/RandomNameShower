@@ -1,7 +1,7 @@
 object Form2: TForm2
-  Left = 411
+  Left = 314
   Height = 234
-  Top = 245
+  Top = 240
   Width = 363
   BorderStyle = bsDialog
   Caption = '选项'
@@ -11,7 +11,7 @@ object Form2: TForm2
   Constraints.MinWidth = 328
   OnCreate = FormCreate
   OnShow = FormShow
-  LCLVersion = '1.6.4.0'
+  LCLVersion = '1.8.0.6'
   object Button1: TButton
     AnchorSideLeft.Control = Owner
     AnchorSideLeft.Side = asrCenter

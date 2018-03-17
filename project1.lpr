@@ -2,19 +2,23 @@ program project1;
 
 {$mode objfpc}{$H+}
 
-uses
-  {$IFDEF UNIX}{$IFDEF UseCThreads}
-  cthreads,
-  {$ENDIF}{$ENDIF}
+uses {$IFDEF UNIX} {$IFDEF UseCThreads}
+  cthreads, {$ENDIF} {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, Unit1, Unit3, Unit2, Unit4, Unit5, Unit6
-  { you can add units after this };
+  Forms,
+  Unit1,
+  Unit3,
+  Unit2,
+  Unit4,
+  Unit5,
+  Unit6,
+  Unit7 { you can add units after this };
 
 {$R *.res}
 
 begin
-  Application.Title:='随机点名器';
-  RequireDerivedFormResource:=True;
+  Application.Title := '随机点名器';
+  RequireDerivedFormResource := True;
   Application.Initialize;
   Application.CreateForm(TLoadingForm, LoadingForm);
   Application.CreateForm(TForm1, Form1);
@@ -23,4 +27,3 @@ begin
   Application.CreateForm(TAboutForm, AboutForm);
   Application.Run;
 end.
-

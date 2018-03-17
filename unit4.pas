@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ExtCtrls,md5;
+  ExtCtrls, md5;
 
 type
 
@@ -24,13 +24,16 @@ type
     { private declarations }
   public
     { public declarations }
+    procedure passwdmd5(md5 : string);
   end;
 
 var
   Form3: TForm3;
 
 implementation
+
 uses unit2;
+
 {$R *.lfm}
 
 { TForm3 }
@@ -42,11 +45,17 @@ end;
 
 procedure TForm3.Button1Click(Sender: TObject);
 begin
-  if md5print(md5string(edit1.Text))=passwordmd5 then begin
-     passwordmd5:=md5print(md5string(edit2.Text));
-     form3.Close;
-  end else showmessage('密码错误，请重试。')
+  if md5print(md5string(edit1.Text)) = passwordmd5 then
+  begin
+    passwordmd5 := md5print(md5string(edit2.Text));
+    form3.Close;
+  end
+  else
+    ShowMessage('密码错误，请重试。');
+end;
+procedure TForm3.passwdmd5(md5 : string);
+begin
+   passwordmd5 := md5;
 end;
 
 end.
-
