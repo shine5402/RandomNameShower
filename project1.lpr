@@ -12,7 +12,7 @@ uses {$IFDEF UNIX} {$IFDEF UseCThreads}
   Unit4,
   Unit5,
   Unit6,
-  Unit7 { you can add units after this };
+  Unit7, Unit8 { you can add units after this };
 
 {$R *.res}
 
@@ -25,5 +25,6 @@ begin
   Application.CreateForm(TForm2, Form2);
   Application.CreateForm(TForm3, Form3);
   Application.CreateForm(TAboutForm, AboutForm);
+  Application.CreateForm(TConfusionSettingsForm, ConfusionSettingsForm);
   Application.Run;
 end.

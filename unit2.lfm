@@ -287,7 +287,7 @@ object Form2: TForm2
         OnClick = Button3Click
         TabOrder = 3
       end
-      object xorButton: TButton
+      object ConfusionSettingsButton: TButton
         AnchorSideLeft.Control = Label3
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = Label3
@@ -297,7 +297,8 @@ object Form2: TForm2
         Top = 30
         Width = 75
         BorderSpacing.Left = 5
-        Caption = 'xor 选项'
+        Caption = '混淆选项'
+        OnClick = ConfusionSettingsButtonClick
         TabOrder = 4
       end
     end

@@ -16,7 +16,7 @@ type
     Button1: TButton;
     Button2: TButton;
     Button3: TButton;
-    xorButton: TButton;
+    ConfusionSettingsButton: TButton;
     CheckBox1: TCheckBox;
     CheckBox2: TCheckBox;
     CheckBox3: TCheckBox;
@@ -44,6 +44,7 @@ type
     procedure Button3Click(Sender: TObject);
     procedure CheckBox4Change(Sender: TObject);
     procedure CheckBox5Change(Sender: TObject);
+    procedure ConfusionSettingsButtonClick(Sender: TObject);
     procedure Edit1Change(Sender: TObject);
     procedure Edit2Change(Sender: TObject);
     procedure EditButton1ButtonClick(Sender: TObject);
@@ -81,7 +82,7 @@ implementation
 {$R *.lfm}
 
 { TForm2 }
-uses unit4;
+uses unit4,unit8;
 
 procedure TForm2.FormCreate(Sender: TObject);
 begin
@@ -179,10 +180,10 @@ begin
     label1.Enabled := False;
   if (checkbox5.Checked and checkbox5.Enabled) then begin
     label3.Enabled := True;
-    xorButton.Enabled := True;
+    ConfusionSettingsButton.Enabled := True;
   end
   else  begin
-    label3.Enabled := False; xorButton.Enabled := False;
+    label3.Enabled := False; ConfusionSettingsButton.Enabled := False;
   end;
 end;
 
@@ -194,6 +195,11 @@ end;
 procedure TForm2.CheckBox5Change(Sender: TObject);
 begin
  TabSheet3SettingCheck();
+end;
+
+procedure TForm2.ConfusionSettingsButtonClick(Sender: TObject);
+begin
+  ConfusionSettingsForm.Show();
 end;
 
 procedure TForm2.Edit1Change(Sender: TObject);

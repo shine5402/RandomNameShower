@@ -110,7 +110,7 @@ begin
     label1.Caption := '保存设置……';
     settings.WriteString('password', 'md5', passwordmd5);
     progressbar1.position := 100;
-    label1.Caption := '完成！……';
+    label1.Caption := '完成！';
     names.Destroy;
     settings.Destroy;
     application.Terminate;

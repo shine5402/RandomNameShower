@@ -1,0 +1,66 @@
+object ConfusionSettingsForm: TConfusionSettingsForm
+  Left = 751
+  Height = 117
+  Top = 498
+  Width = 340
+  Caption = '混淆选项'
+  ClientHeight = 117
+  ClientWidth = 340
+  OnCreate = FormCreate
+  OnShow = FormShow
+  Position = poScreenCenter
+  LCLVersion = '1.8.0.6'
+  object Label1: TLabel
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    Left = 15
+    Height = 17
+    Top = 15
+    Width = 103
+    BorderSpacing.Left = 15
+    BorderSpacing.Top = 15
+    Caption = '当前混淆算法：xor'
+    ParentColor = False
+  end
+  object Label2: TLabel
+    AnchorSideLeft.Control = Label1
+    AnchorSideTop.Control = Label1
+    AnchorSideTop.Side = asrBottom
+    Left = 15
+    Height = 17
+    Top = 47
+    Width = 59
+    BorderSpacing.Top = 15
+    Caption = 'xor 因子：'
+    ParentColor = False
+  end
+  object Edit1: TEdit
+    AnchorSideLeft.Control = Label2
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Label2
+    AnchorSideTop.Side = asrCenter
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 74
+    Height = 25
+    Top = 43
+    Width = 251
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Right = 15
+    NumbersOnly = True
+    TabOrder = 0
+  end
+  object Button1: TButton
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 128
+    Height = 25
+    Top = 82
+    Width = 75
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.Bottom = 10
+    Caption = '确定'
+    OnClick = Button1Click
+    TabOrder = 1
+  end
+end

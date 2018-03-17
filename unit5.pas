@@ -210,9 +210,10 @@ begin
       loadingform.label1.Caption := '重设窗口保存布尔值';
       savewindowsize :=  False;
       progressbar1.position := 47;
-      loadingform.label1.Caption := '重设防暗箱布尔值';
+      loadingform.label1.Caption := '重设防暗箱相关值';
       whetherhash := False;
       encrypthash := False;
+      encryptkey := 1234;
       progressbar1.position := 54;
       loadingform.label1.Caption := '读取名单文件';
       names := TStringList.Create;
