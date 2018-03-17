@@ -19,8 +19,10 @@
     </i18n>
     <VersionInfo>
       <UseVersionInfo Value="True"/>
+      <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="1"/>
       <MinorVersionNr Value="17"/>
+      <RevisionNr Value="2"/>
       <Language Value="0804"/>
       <StringTable Comments="一个简单好用的随机点名器" FileDescription="一个简单好用的随机点名器" LegalCopyright="GNU GPL V3" OriginalFilename="随机点名器" ProductName="随机点名器" ProductVersion="1"/>
     </VersionInfo>

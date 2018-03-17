@@ -11,6 +11,7 @@ object LoadingForm: TLoadingForm
   OnActivate = FormActivate
   OnCreate = FormCreate
   OnShow = FormShow
+  Position = poScreenCenter
   LCLVersion = '1.8.0.6'
   object ProgressBar1: TProgressBar
     AnchorSideLeft.Control = Owner

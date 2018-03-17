@@ -10,7 +10,8 @@ object ExitingForm: TExitingForm
   ClientWidth = 434
   OnCreate = FormCreate
   OnShow = FormShow
-  LCLVersion = '1.6.2.0'
+  Position = poScreenCenter
+  LCLVersion = '1.8.0.6'
   object ProgressBar1: TProgressBar
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Label1

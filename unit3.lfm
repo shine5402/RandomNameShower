@@ -10,7 +10,8 @@ object AboutForm: TAboutForm
   Constraints.MinHeight = 176
   Constraints.MinWidth = 616
   OnCreate = FormCreate
-  LCLVersion = '1.6.4.0'
+  Position = poScreenCenter
+  LCLVersion = '1.8.0.6'
   object Image1: TImage
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
@@ -256,9 +257,9 @@ object AboutForm: TAboutForm
     Left = 111
     Height = 17
     Top = 63
-    Width = 70
+    Width = 36
     BorderSpacing.Top = 5
-    Caption = '版本：1.17.0'
+    Caption = '版本：'
     ParentColor = False
     OnClick = Label2Click
   end

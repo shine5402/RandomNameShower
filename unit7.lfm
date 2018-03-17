@@ -1,7 +1,7 @@
 object FirstRunForm: TFirstRunForm
-  Left = 1012
+  Left = 944
   Height = 477
-  Top = 283
+  Top = 295
   Width = 500
   Caption = '新手向导 - 随机点名器'
   ClientHeight = 477
@@ -11,6 +11,7 @@ object FirstRunForm: TFirstRunForm
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
+  Position = poScreenCenter
   ShowInTaskBar = stAlways
   LCLVersion = '1.8.0.6'
   object Image1: TImage

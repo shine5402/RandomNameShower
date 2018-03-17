@@ -20,6 +20,7 @@ type
     Label2: TLabel;
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { private declarations }
   public
@@ -41,6 +42,12 @@ uses unit2;
 procedure TForm3.FormCreate(Sender: TObject);
 begin
 
+end;
+
+procedure TForm3.FormShow(Sender: TObject);
+begin
+  edit1.text := '';
+  edit2.text := '';
 end;
 
 procedure TForm3.Button1Click(Sender: TObject);

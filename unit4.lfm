@@ -1,13 +1,15 @@
 object Form3: TForm3
-  Left = 387
+  Left = 461
   Height = 114
-  Top = 480
+  Top = 479
   Width = 394
   BorderStyle = bsDialog
   Caption = '密码修改'
   ClientHeight = 114
   ClientWidth = 394
   OnCreate = FormCreate
+  OnShow = FormShow
+  Position = poScreenCenter
   LCLVersion = '1.8.0.6'
   object Label1: TLabel
     AnchorSideTop.Control = Owner

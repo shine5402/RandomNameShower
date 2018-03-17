@@ -49,6 +49,8 @@ type
     procedure EditButton1Change(Sender: TObject);
     procedure EditButton1Enter(Sender: TObject);
     procedure EditButton1KeyUp(Sender: TObject; var Key: word; Shift: TShiftState);
+    procedure FileNameEdit1Change(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure TabSheet1ContextPopup(Sender: TObject; MousePos: TPoint;
@@ -59,15 +61,17 @@ type
       var Handled: boolean);
     procedure TabSheet5ContextPopup(Sender: TObject; MousePos: TPoint;
       var Handled: boolean);
+
   private
-    { private declarations }
+{ private declarations }
+    procedure CheckPassword();
   public
     { public declarations }
   end;
 
 var
   Form2: TForm2;
-  rootenabled, ifenter: boolean;
+  rootenabled: boolean;
   passwordmd5: string;
 
 implementation
@@ -102,13 +106,18 @@ begin
   else
     label3.Enabled := False;
   tabsheet3.tabvisible := rootenabled;
+  Tabsheet4.TabVisible:= not(rootenabled);
   edit1.Text := IntToStr(rollnumber);
   edit2.Text := IntToStr(animateinterval);
   Label7.Caption := '动画总时长将为 ' + IntToStr(rollnumber * animateinterval) + ' 毫秒';
-  if not (form1.menuitem5.Checked) then
-    tabsheet5.TabVisible := False
-  else
-    tabsheet5.TabVisible := True;
+  if not (form1.menuitem5.Checked) then   begin
+    tabsheet5.Hide();
+    tabsheet5.TabVisible:=false;
+  end
+  else begin
+    tabsheet5.Show();
+     tabsheet5.TabVisible:=true;
+  end;      PageControl1.ActivePage := TabSheet1;
 end;
 
 procedure TForm2.TabSheet1ContextPopup(Sender: TObject; MousePos: TPoint;
@@ -137,9 +146,7 @@ end;
 
 procedure TForm2.Button1Click(Sender: TObject);
 begin
-  if not (ifenter) then
-  begin
-    namespath := filenameedit1.Text;
+   namespath := filenameedit1.Text;
     if not (fileexists(namespath)) then
     begin
       ShowMessage('找不到您所指定的名单文件。还请检查是否输入错误。');
@@ -155,12 +162,6 @@ begin
     rollnumber := StrToInt(edit1.Text);
     animateinterval := StrToInt(edit2.Text);
     form2.Close;
-  end
-  else
-    ifenter := False;
-  editbutton1.Text := '';
-  tabsheet3.TabVisible := False;
-  tabsheet4.TabVisible := True;
 end;
 
 procedure TForm2.Button2Click(Sender: TObject);
@@ -171,8 +172,8 @@ end;
 procedure TForm2.Button3Click(Sender: TObject);
 begin
   editbutton1.Text := '';
-  tabsheet3.TabVisible := False;
-  tabsheet4.TabVisible := True;
+  tabsheet3.Hide();
+  tabsheet4.Show();
   pagecontrol1.ActivePage := tabsheet4;
 end;
 
@@ -224,12 +225,20 @@ end;
 
 procedure TForm2.EditButton1ButtonClick(Sender: TObject);
 begin
-  label5.Caption := '';
+   CheckPassword;
+end;
+procedure TForm2.CheckPassword();
+begin
+    label5.Caption := '';
   if MD5Print(MD5String(EditButton1.Text)) = passwordmd5 then
   begin
-    Tabsheet3.TabVisible := True;
-    pagecontrol1.ActivePage := tabsheet3;
-    tabsheet4.TabVisible := False;
+    rootenabled := true;
+    Tabsheet3.Show();
+    Tabsheet3.TabVisible:=true;
+
+    tabsheet4.Hide();
+    Tabsheet4.TabVisible:=false;
+    PageControl1.ActivePage := Tabsheet3;
   end
   else
     label5.Caption := '密码错误，请重试。';
@@ -250,9 +259,19 @@ begin
 
   if key = 13 then
   begin
-    ifenter := True;
-    EditButton1ButtonClick(application);
+    CheckPassword;
   end;
+end;
+
+procedure TForm2.FileNameEdit1Change(Sender: TObject);
+begin
+
+end;
+
+procedure TForm2.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+begin
+  rootenabled := false;
+  EditButton1.Text:='';
 end;
 
 end.

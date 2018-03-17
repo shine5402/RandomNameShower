@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  StdCtrls, shellapi;
+  StdCtrls, shellapi,resource, versiontypes, versionresource;
 
 type
 
@@ -35,12 +35,13 @@ type
     procedure Label2Click(Sender: TObject);
     procedure Label3Click(Sender: TObject);
     procedure Memo1Change(Sender: TObject);
+
   private
     { private declarations }
   public
     { public declarations }
   end;
-
+ function resourceVersionInfo: string;
 var
   AboutForm: TAboutForm;
 
@@ -65,7 +66,7 @@ end;
 
 procedure TAboutForm.FormCreate(Sender: TObject);
 begin
-
+Label2.Caption:='版本：'+resourceVersionInfo;
 end;
 
 procedure TAboutForm.Image2Click(Sender: TObject);
@@ -95,5 +96,42 @@ begin
   shellexecute(handle, 'open', 'https://github.com/shine5402/RandomNameShower/releases',
     nil, nil, 1);
 end;
+function resourceVersionInfo: string;
 
+  (* Unlike most of AboutText (below), this takes significant activity at run-    *)
+  (* time to extract version/release/build numbers from resource information      *)
+  (* appended to the binary.                                                      *)
+
+var
+  Stream: TResourceStream;
+  vr: TVersionResource;
+  fi: TVersionFixedInfo;
+
+begin
+  Result := '';
+  try
+
+    (* This raises an exception if version info has not been incorporated into the  *)
+    (* binary (Lazarus Project -> Project Options -> Version Info -> Version        *)
+    (* numbering).                                                                  *)
+
+    Stream := TResourceStream.CreateFromID(HINSTANCE, 1, PChar(RT_VERSION));
+    try
+      vr := TVersionResource.Create;
+      try
+        vr.SetCustomRawDataStream(Stream);
+        fi := vr.FixedInfo;
+        Result := IntToStr(fi.FileVersion[0]) + '.' +
+          IntToStr(fi.FileVersion[1]) + '.' +
+          IntToStr(fi.FileVersion[2]) + ' build ' + IntToStr(fi.FileVersion[3]) {+ eol};
+        vr.SetCustomRawDataStream(nil)
+      finally
+        vr.Free
+      end
+    finally
+      Stream.Free
+    end
+  except
+  end;
+end{ resourceVersionInfo };
 end.

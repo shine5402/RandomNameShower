@@ -1,7 +1,7 @@
 object Form2: TForm2
-  Left = 314
+  Left = 598
   Height = 234
-  Top = 240
+  Top = 399
   Width = 363
   BorderStyle = bsDialog
   Caption = '选项'
@@ -9,8 +9,10 @@ object Form2: TForm2
   ClientWidth = 363
   Constraints.MinHeight = 151
   Constraints.MinWidth = 328
+  OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
+  Position = poScreenCenter
   LCLVersion = '1.8.0.6'
   object Button1: TButton
     AnchorSideLeft.Control = Owner
@@ -124,6 +126,7 @@ object Form2: TForm2
         BorderSpacing.Right = 5
         MaxLength = 0
         TabOrder = 0
+        OnChange = FileNameEdit1Change
       end
     end
     object TabSheet5: TTabSheet
@@ -312,7 +315,7 @@ object Form2: TForm2
         OnButtonClick = EditButton1ButtonClick
         OnChange = EditButton1Change
         OnEnter = EditButton1Enter
-        OnKeyUp = EditButton1KeyUp
+        OnKeyDown = EditButton1KeyUp
         PasswordChar = '*'
         TabOrder = 0
         TextHint = '输入管理员密码'
