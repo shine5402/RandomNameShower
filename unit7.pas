@@ -150,7 +150,7 @@ end;
 procedure TFirstRunForm.FormShow(Sender: TObject);
 begin
   step := 1;
-  Memo1.Lines.LoadFromFile('./names.txt');
+  if fileexists('./names.txt') then Memo1.Lines.LoadFromFile('./names.txt');
   UpdateForm();
 end;
 
