@@ -49,7 +49,7 @@
         <UnitName Value="Unit2"/>
         <EditorIndex Value="5"/>
         <TopLine Value="145"/>
-        <CursorPos X="82" Y="161"/>
+        <CursorPos X="7" Y="169"/>
         <UsageCount Value="69"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -105,8 +105,8 @@
         <UnitName Value="Unit7"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="71"/>
-        <CursorPos X="20" Y="86"/>
+        <TopLine Value="129"/>
+        <CursorPos X="80" Y="144"/>
         <UsageCount Value="31"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>

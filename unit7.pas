@@ -141,8 +141,17 @@ end;
 
 procedure TFirstRunForm.Button1Click(Sender: TObject);
 begin
+   PasswordModifyForm := TPasswordModifyForm.Create(Application);//动态创建窗体
   PasswordModifyForm.passwdmd5('25d55ad283aa400af464c76d713c07ad');
-  PasswordModifyForm.Show();
+
+  try
+    PasswordModifyForm.ShowModal;//显示模式窗体
+  finally
+    PasswordModifyForm.Free; //释放窗体实例
+    //ShowMessage(BoolToStr(ModalForm = nil));
+    PasswordModifyForm := nil; //把窗体变量设为nil
+    //ShowMessage(BoolToStr(ModalForm = nil));
+  end;
 end;
 
 procedure TFirstRunForm.Button2Click(Sender: TObject);
