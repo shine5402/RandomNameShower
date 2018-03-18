@@ -10,9 +10,9 @@ uses
 
 type
 
-  { TForm1 }
+  { TMainForm }
 
-  TForm1 = class(TForm)
+  TMainForm = class(TForm)
     Button1: TButton;
     FontDialog1: TFontDialog;
     Label1: TLabel;
@@ -49,7 +49,7 @@ type
   end;
 
 var
-  Form1: TForm1;
+  MainForm: TMainForm;
   names: TStringList;
   namespath, settingspath, nameshash, s, nameslasthash: string;
   rollnumber, k, i, j{,animateduration,animatetimes,animateintervalmin,rollnumbermin},
@@ -64,41 +64,41 @@ uses unit2, unit6;
 
 {$R *.lfm}
 
-{ TForm1 }
-procedure Tform1.givenames(newnames : TStrings);
+{ TMainForm }
+procedure TMainForm.givenames(newnames : TStrings);
 begin
   names.Assign(newnames);
 end;
 
-procedure TForm1.FormCreate(Sender: TObject);
+procedure TMainForm.FormCreate(Sender: TObject);
 begin
 end;
 
-procedure TForm1.FormDestroy(Sender: TObject);
+procedure TMainForm.FormDestroy(Sender: TObject);
 begin
 
 end;
 
-procedure TForm1.FormShow(Sender: TObject);
+procedure TMainForm.FormShow(Sender: TObject);
 begin
   if savewindowsize then
   begin
-    Form1.SetBounds(settings.ReadInteger('window', 'left', 169),
+    MainForm.SetBounds(settings.ReadInteger('window', 'left', 169),
       settings.ReadInteger('window', 'top', 491), settings.ReadInteger(
       'window', 'width', 339), settings.ReadInteger('window', 'height', 274));
 
-    Form1.WindowState := TWindowState(settings.ReadInteger(
+    MainForm.WindowState := TWindowState(settings.ReadInteger(
       'window', 'WindowState', integer(wsNormal)));
   end;
 end;
 
-procedure TForm1.MenuItem3Click(Sender: TObject);
+procedure TMainForm.MenuItem3Click(Sender: TObject);
 begin
   if fontdialog1.Execute then
     label1.Font := fontdialog1.Font;
 end;
 
-procedure TForm1.MenuItem4Click(Sender: TObject);
+procedure TMainForm.MenuItem4Click(Sender: TObject);
 begin
  AboutForm := TAboutForm.Create(Application);//动态创建窗体
   try
@@ -112,48 +112,48 @@ begin
  // aboutform.Show;
 end;
 
-procedure TForm1.MenuItem5Click(Sender: TObject);
+procedure TMainForm.MenuItem5Click(Sender: TObject);
 begin
   animate := not animate;
   MenuItem5.Checked := animate;
 end;
 
-procedure TForm1.MenuItem6Click(Sender: TObject);
+procedure TMainForm.MenuItem6Click(Sender: TObject);
 begin
 
 end;
 
-procedure TForm1.MenuItem7Click(Sender: TObject);
+procedure TMainForm.MenuItem7Click(Sender: TObject);
 begin
-  Form2 := TForm2.Create(Application);//动态创建窗体
+  OptionForm := TOptionForm.Create(Application);//动态创建窗体
   try
-    Form2.ShowModal;//显示模式窗体
+    OptionForm.ShowModal;//显示模式窗体
   finally
-    Form2.Free; //释放窗体实例
+    OptionForm.Free; //释放窗体实例
     //ShowMessage(BoolToStr(ModalForm = nil));
-    Form2 := nil; //把窗体变量设为nil
+    OptionForm := nil; //把窗体变量设为nil
     //ShowMessage(BoolToStr(ModalForm = nil));
   end;
-  //form2.Show;
+  //OptionForm.Show;
 end;
 
-procedure TForm1.MenuItem8Click(Sender: TObject);
+procedure TMainForm.MenuItem8Click(Sender: TObject);
 begin
   Label1.Caption := '';
 end;
 
-procedure TForm1.Timer1StartTimer(Sender: TObject);
+procedure TMainForm.Timer1StartTimer(Sender: TObject);
 begin
   k := 0;
   timer1.interval := animateinterval;
 end;
 
-procedure TForm1.Timer1StopTimer(Sender: TObject);
+procedure TMainForm.Timer1StopTimer(Sender: TObject);
 begin
   k := 0;
 end;
 
-procedure TForm1.Timer1Timer(Sender: TObject);
+procedure TMainForm.Timer1Timer(Sender: TObject);
 var
   tmp: integer;
 begin
@@ -168,12 +168,13 @@ begin
   end;
 end;
 
-procedure TForm1.Button1Click(Sender: TObject);
+procedure TMainForm.Button1Click(Sender: TObject);
 begin
      {i:=names.count;
   j:=random(i);
   Label1.Caption:=names.Strings[j];
   }
+  if i <> 0 then begin
   if animate then
   begin
     j := random(i);
@@ -184,9 +185,11 @@ begin
     j := random(i);
     Label1.Caption := names.Strings[j];
   end;
+end else begin
+  showmessage('名字列表为空。请检查您的名单文件是否正确。然后重启本程序或打开选项窗口后点击“确定”来促使程序刷新名单。');
+  end;
 end;
-
-procedure TForm1.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+procedure TMainForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
   Exitingform := Texitingform.Create(Application);
   exitingform.Show;

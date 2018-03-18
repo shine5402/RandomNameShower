@@ -10,9 +10,9 @@ uses
 
 type
 
-  { TForm3 }
+  { TPasswordModifyForm }
 
-  TForm3 = class(TForm)
+  TPasswordModifyForm = class(TForm)
     Button1: TButton;
     Edit1: TEdit;
     Edit2: TEdit;
@@ -30,7 +30,7 @@ type
   end;
 
 var
-  Form3: TForm3;
+  PasswordModifyForm: TPasswordModifyForm;
 
 implementation
 
@@ -38,35 +38,35 @@ uses unit2;
 
 {$R *.lfm}
 
-{ TForm3 }
+{ TPasswordModifyForm }
 
-procedure TForm3.FormCreate(Sender: TObject);
+procedure TPasswordModifyForm.FormCreate(Sender: TObject);
 begin
 
 end;
 
-procedure TForm3.FormShow(Sender: TObject);
+procedure TPasswordModifyForm.FormShow(Sender: TObject);
 begin
   edit1.text := '';
   edit2.text := '';
 end;
 
-procedure TForm3.Button1Click(Sender: TObject);
+procedure TPasswordModifyForm.Button1Click(Sender: TObject);
 begin
   if md5print(md5string(edit1.Text)) = passwordmd5 then
   begin
     passwordmd5 := md5print(md5string(edit2.Text));
-    form3.Close;
+    PasswordModifyForm.Close;
   end
   else
     ShowMessage('密码错误，请重试。');
 end;
 
-procedure TForm3.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+procedure TPasswordModifyForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
 end;
 
-procedure TForm3.passwdmd5(md5 : string);
+procedure TPasswordModifyForm.passwdmd5(md5 : string);
 begin
    passwordmd5 := md5;
 end;

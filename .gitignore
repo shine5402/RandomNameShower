@@ -18,3 +18,4 @@ names.txt
 *.png
 !/截图/*.png
 README.pdf
+README.html

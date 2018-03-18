@@ -10,9 +10,9 @@ uses
 
 type
 
-  { TForm2 }
+  { TOptionForm }
 
-  TForm2 = class(TForm)
+  TOptionForm = class(TForm)
     Button1: TButton;
     Button2: TButton;
     Button3: TButton;
@@ -73,7 +73,7 @@ type
   end;
 
 var
-  Form2: TForm2;
+  OptionForm: TOptionForm;
   rootenabled: boolean;
   passwordmd5: string;
 
@@ -81,14 +81,14 @@ implementation
 
 {$R *.lfm}
 
-{ TForm2 }
+{ TOptionForm }
 uses unit4,unit8;
 
-procedure TForm2.FormCreate(Sender: TObject);
+procedure TOptionForm.FormCreate(Sender: TObject);
 begin
 end;
 
-procedure TForm2.FormShow(Sender: TObject);
+procedure TOptionForm.FormShow(Sender: TObject);
 begin
   filenameedit1.Text := namespath;
   checkbox1.Checked := savefontsetting;
@@ -102,7 +102,7 @@ begin
   edit1.Text := IntToStr(rollnumber);
   edit2.Text := IntToStr(animateinterval);
   Label7.Caption := '动画总时长将为 ' + IntToStr(rollnumber * animateinterval) + ' 毫秒';
-  if not (form1.menuitem5.Checked) then   begin
+  if not (MainForm.menuitem5.Checked) then   begin
     tabsheet5.Hide();
     tabsheet5.TabVisible:=false;
   end
@@ -112,31 +112,31 @@ begin
   end;      PageControl1.ActivePage := TabSheet1;
 end;
 
-procedure TForm2.TabSheet1ContextPopup(Sender: TObject; MousePos: TPoint;
+procedure TOptionForm.TabSheet1ContextPopup(Sender: TObject; MousePos: TPoint;
   var Handled: boolean);
 begin
 
 end;
 
-procedure TForm2.TabSheet3ContextPopup(Sender: TObject; MousePos: TPoint;
+procedure TOptionForm.TabSheet3ContextPopup(Sender: TObject; MousePos: TPoint;
   var Handled: boolean);
 begin
 
 end;
 
-procedure TForm2.TabSheet4ContextPopup(Sender: TObject; MousePos: TPoint;
+procedure TOptionForm.TabSheet4ContextPopup(Sender: TObject; MousePos: TPoint;
   var Handled: boolean);
 begin
 
 end;
 
-procedure TForm2.TabSheet5ContextPopup(Sender: TObject; MousePos: TPoint;
+procedure TOptionForm.TabSheet5ContextPopup(Sender: TObject; MousePos: TPoint;
   var Handled: boolean);
 begin
 
 end;
 
-procedure TForm2.Button1Click(Sender: TObject);
+procedure TOptionForm.Button1Click(Sender: TObject);
 begin
    namespath := filenameedit1.Text;
     if not (fileexists(namespath)) then
@@ -153,30 +153,30 @@ begin
     i := names.Count;
     rollnumber := StrToInt(edit1.Text);
     animateinterval := StrToInt(edit2.Text);
-    form2.Close;
+    OptionForm.Close;
 end;
 
-procedure TForm2.Button2Click(Sender: TObject);
+procedure TOptionForm.Button2Click(Sender: TObject);
 begin
-  Form3 := TForm3.Create(Application);//动态创建窗体
+  PasswordModifyForm := TPasswordModifyForm.Create(Application);//动态创建窗体
   try
-    Form3.ShowModal;//显示模式窗体
+    PasswordModifyForm.ShowModal;//显示模式窗体
   finally
-    Form3.Free; //释放窗体实例
+    PasswordModifyForm.Free; //释放窗体实例
     //ShowMessage(BoolToStr(ModalForm = nil));
-    Form3 := nil; //把窗体变量设为nil
+    PasswordModifyForm := nil; //把窗体变量设为nil
     //ShowMessage(BoolToStr(ModalForm = nil));
   end;
 end;
 
-procedure TForm2.Button3Click(Sender: TObject);
+procedure TOptionForm.Button3Click(Sender: TObject);
 begin
   editbutton1.Text := '';
   tabsheet3.Hide();
   tabsheet4.Show();
   pagecontrol1.ActivePage := tabsheet4;
 end;
-procedure Tform2.TabSheet3SettingCheck();
+procedure TOptionForm.TabSheet3SettingCheck();
 begin
   if not (checkbox4.Checked) then
     checkbox5.Enabled := False
@@ -195,17 +195,17 @@ begin
   end;
 end;
 
-procedure TForm2.CheckBox4Change(Sender: TObject);
+procedure TOptionForm.CheckBox4Change(Sender: TObject);
 begin
   TabSheet3SettingCheck();
 end;
 
-procedure TForm2.CheckBox5Change(Sender: TObject);
+procedure TOptionForm.CheckBox5Change(Sender: TObject);
 begin
  TabSheet3SettingCheck();
 end;
 
-procedure TForm2.ConfusionSettingsButtonClick(Sender: TObject);
+procedure TOptionForm.ConfusionSettingsButtonClick(Sender: TObject);
 begin
   ConfusionSettingsForm := TConfusionSettingsForm.Create(Application);//动态创建窗体
   try
@@ -219,25 +219,25 @@ begin
  // ConfusionSettingsForm.Show();
 end;
 
-procedure TForm2.Edit1Change(Sender: TObject);
+procedure TOptionForm.Edit1Change(Sender: TObject);
 begin
   if (edit1.Text <> '') and (edit2.Text <> '') then
     Label7.Caption := '动画总时长将为 ' + IntToStr(StrToInt(edit1.Text) *
       StrToInt(edit2.Text)) + ' 毫秒';
 end;
 
-procedure TForm2.Edit2Change(Sender: TObject);
+procedure TOptionForm.Edit2Change(Sender: TObject);
 begin
   if (edit1.Text <> '') and (edit2.Text <> '') then
     Label7.Caption := '动画总时长将为 ' + IntToStr(StrToInt(edit1.Text) *
       StrToInt(edit2.Text)) + ' 毫秒';
 end;
 
-procedure TForm2.EditButton1ButtonClick(Sender: TObject);
+procedure TOptionForm.EditButton1ButtonClick(Sender: TObject);
 begin
    CheckPassword;
 end;
-procedure TForm2.CheckPassword();
+procedure TOptionForm.CheckPassword();
 begin
     label5.Caption := '';
   if MD5Print(MD5String(EditButton1.Text)) = passwordmd5 then
@@ -254,17 +254,17 @@ begin
     label5.Caption := '密码错误，请重试。';
 end;
 
-procedure TForm2.EditButton1Change(Sender: TObject);
+procedure TOptionForm.EditButton1Change(Sender: TObject);
 begin
 
 end;
 
-procedure TForm2.EditButton1Enter(Sender: TObject);
+procedure TOptionForm.EditButton1Enter(Sender: TObject);
 begin
 
 end;
 
-procedure TForm2.EditButton1KeyUp(Sender: TObject; var Key: word; Shift: TShiftState);
+procedure TOptionForm.EditButton1KeyUp(Sender: TObject; var Key: word; Shift: TShiftState);
 begin
 
   if key = 13 then
@@ -273,12 +273,12 @@ begin
   end;
 end;
 
-procedure TForm2.FileNameEdit1Change(Sender: TObject);
+procedure TOptionForm.FileNameEdit1Change(Sender: TObject);
 begin
 
 end;
 
-procedure TForm2.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+procedure TOptionForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
   rootenabled := false;
   EditButton1.Text:='';

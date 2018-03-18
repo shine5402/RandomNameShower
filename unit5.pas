@@ -122,16 +122,16 @@ begin
         animate := settings.ReadBool('animate', 'switch', False);
         rollnumber := settings.readinteger('animate', 'rollnumber', 30);
         animateinterval := settings.readinteger('animate', 'animateinterval', 50);
-        form1.MenuItem5.Checked := animate;
+        MainForm.MenuItem5.Checked := animate;
       end;
       progressbar1.position := 67;
       loadingform.label1.Caption := '读取字体设置';
       if savefontsetting then
       begin
-        form1.fontdialog1.Font.Size := settings.ReadInteger('font', 'size', 18);
-        form1.fontdialog1.Font.color := settings.readinteger('font', 'color', clDefault);
-        form1.fontdialog1.Font.Name := settings.Readstring('font', 'fontname', '微软雅黑');
-        form1.label1.Font := form1.fontdialog1.Font;
+        MainForm.fontdialog1.Font.Size := settings.ReadInteger('font', 'size', 18);
+        MainForm.fontdialog1.Font.color := settings.readinteger('font', 'color', clDefault);
+        MainForm.fontdialog1.Font.Name := settings.Readstring('font', 'fontname', '微软雅黑');
+        MainForm.label1.Font := MainForm.fontdialog1.Font;
       end;
       progressbar1.position := 74;
       loadingform.label1.Caption := '校验文件Hash值，如果卡顿超过3分钟，请退出重试……';
@@ -178,7 +178,7 @@ begin
       progressbar1.position := 87;
       loadingform.label1.Caption := '启动完成！';
       progressbar1.position := 100;
-      form1.Show;
+      MainForm.Show;
     end;
     loadingform.hide;
   end;
@@ -191,7 +191,7 @@ begin
     loadingform.label1.Caption := '程序启动……';
     loadingform.label1.Caption := '重置管理员开关并检查密码';
     rootenabled := False;
-    if passwordmd5 = '' then Form3.passwdmd5('25d55ad283aa400af464c76d713c07ad');
+    if passwordmd5 = '' then PasswordModifyForm.passwdmd5('25d55ad283aa400af464c76d713c07ad');
     progressbar1.position := 6;
     begin
       loadingform.label1.Caption := '建立设置文件对象';
@@ -223,13 +223,13 @@ begin
         animate := False;
         rollnumber :=  30;
         animateinterval := 50;
-        form1.MenuItem5.Checked := animate;
+        MainForm.MenuItem5.Checked := animate;
       progressbar1.position := 67;
       loadingform.label1.Caption := '重设字体设置';
-        form1.fontdialog1.Font.Size := 18;
-        form1.fontdialog1.Font.color := clDefault;
-        form1.fontdialog1.Font.Name := '微软雅黑';
-        form1.label1.Font := form1.fontdialog1.Font;
+        MainForm.fontdialog1.Font.Size := 18;
+        MainForm.fontdialog1.Font.color := clDefault;
+        MainForm.fontdialog1.Font.Name := '微软雅黑';
+        MainForm.label1.Font := MainForm.fontdialog1.Font;
       progressbar1.position := 74;
       loadingform.label1.Caption := '校验文件Hash值，如果卡顿超过3分钟，请退出重试……';
       if encrypthash then
@@ -275,7 +275,7 @@ begin
       progressbar1.position := 87;
       loadingform.label1.Caption := '启动完成！';
       progressbar1.position := 100;
-      form1.Show;
+      MainForm.Show;
     end;
     loadingform.hide;
   end;

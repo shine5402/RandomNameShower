@@ -68,11 +68,11 @@ begin
     label1.Caption := '保存设置……';
     if savewindowsize then
     begin
-      settings.WriteInteger('window', 'top', Form1.top);
-      settings.WriteInteger('window', 'left', Form1.left);
-      settings.WriteInteger('window', 'width', Form1.Width);
-      settings.WriteInteger('window', 'height', Form1.Height);
-      settings.WriteInteger('window', 'WindowState', integer(Form1.WindowState));
+      settings.WriteInteger('window', 'top', MainForm.top);
+      settings.WriteInteger('window', 'left', MainForm.left);
+      settings.WriteInteger('window', 'width', MainForm.Width);
+      settings.WriteInteger('window', 'height', MainForm.Height);
+      settings.WriteInteger('window', 'WindowState', integer(MainForm.WindowState));
     end;
     progressbar1.position := 20;
     settings.WriteString('paths', 'namespath', namespath);
@@ -84,9 +84,9 @@ begin
     progressbar1.position := 40;
     if savefontsetting then
     begin
-      settings.writeinteger('font', 'size', form1.fontdialog1.Font.Size);
-      settings.writeinteger('font', 'color', form1.fontdialog1.Font.color);
-      settings.writestring('font', 'fontname', form1.fontdialog1.Font.Name);
+      settings.writeinteger('font', 'size', MainForm.fontdialog1.Font.Size);
+      settings.writeinteger('font', 'color', MainForm.fontdialog1.Font.color);
+      settings.writestring('font', 'fontname', MainForm.fontdialog1.Font.Name);
     end;
     progressbar1.position := 60;
     if saveanimatesetting then

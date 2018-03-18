@@ -1,4 +1,4 @@
-object Form3: TForm3
+object PasswordModifyForm: TPasswordModifyForm
   Left = 461
   Height = 114
   Top = 479

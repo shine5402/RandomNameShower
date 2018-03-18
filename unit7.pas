@@ -78,6 +78,9 @@ begin
   end;
   if step = 3 then
   begin
+    if Memo1.Lines.Count = 0 then begin
+      showmessage('警告：您没有输入任何名字。尽管你可以日后再为程序指定名单文件，但在这之前程序将无法正常运作。');
+      end;
     Label2.Caption := '步骤 3 / 4 - 设置管理员密码';
     Label3.Caption :=
       '本程序带有防暗箱功能，即防止在公用电脑上（如多媒体教室主机）其他人为更改概率而恶意篡改名单文件。该功能需要您设置管理员密码。' + #13 + '我们为您设置的默认密码是12345678。为了安全性，请您单击以下按钮修改密码。';
@@ -138,8 +141,8 @@ end;
 
 procedure TFirstRunForm.Button1Click(Sender: TObject);
 begin
-  Form3.passwdmd5('25d55ad283aa400af464c76d713c07ad');
-  Form3.Show();
+  PasswordModifyForm.passwdmd5('25d55ad283aa400af464c76d713c07ad');
+  PasswordModifyForm.Show();
 end;
 
 procedure TFirstRunForm.Button2Click(Sender: TObject);
