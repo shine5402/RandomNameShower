@@ -88,7 +88,7 @@ end;
 
 procedure TAboutForm.Button1Click(Sender: TObject);
 begin
-  AboutForm.Hide;
+  AboutForm.close;
 end;
 
 procedure TAboutForm.Button2Click(Sender: TObject);

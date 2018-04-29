@@ -12,7 +12,7 @@ object AboutForm: TAboutForm
   OnCreate = FormCreate
   Position = poScreenCenter
   ShowInTaskBar = stAlways
-  LCLVersion = '1.8.0.6'
+  LCLVersion = '1.8.2.0'
   object Image1: TImage
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner

@@ -1,7 +1,7 @@
 object FirstRunForm: TFirstRunForm
-  Left = 944
+  Left = 682
   Height = 477
-  Top = 295
+  Top = 286
   Width = 500
   Caption = '新手向导 - 随机点名器'
   ClientHeight = 477
@@ -14,7 +14,7 @@ object FirstRunForm: TFirstRunForm
   OnShow = FormShow
   Position = poScreenCenter
   ShowInTaskBar = stAlways
-  LCLVersion = '1.8.0.6'
+  LCLVersion = '1.8.2.0'
   object Image1: TImage
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
@@ -1228,13 +1228,12 @@ object FirstRunForm: TFirstRunForm
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     Left = 20
-    Height = 34
+    Height = 1
     Top = 109
     Width = 460
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 5
     BorderSpacing.Right = 20
-    Caption = '请在下面的文本框中输入您要进行随机点名的人员的名单，一行一个。程序将在这个名单中随机点名。'
     ParentColor = False
     Visible = False
     WordWrap = True
@@ -1247,8 +1246,8 @@ object FirstRunForm: TFirstRunForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Label4
     Left = 20
-    Height = 270
-    Top = 143
+    Height = 269
+    Top = 110
     Width = 460
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Right = 20
@@ -1262,11 +1261,11 @@ object FirstRunForm: TFirstRunForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Panel1
     Left = 20
-    Height = 34
-    Top = 413
+    Height = 68
+    Top = 379
     Width = 460
     Anchors = [akLeft, akRight, akBottom]
-    Caption = '名单文件默认保存在程序文件夹下的names.txt中。事先放置在该文件中的内容已经加载至上面的文本框中。'
+    Caption = '请在上面的文本框中输入您要进行随机点名的人员的名单，一行一个。程序将在这个名单中随机点名。'#13#10'名单文件默认保存在程序文件夹下的names.txt中。事先放置在该文件中的内容已经加载至上面的文本框中。'
     ParentColor = False
     Visible = False
     WordWrap = True
